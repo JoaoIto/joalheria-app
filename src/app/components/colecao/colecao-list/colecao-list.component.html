@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+  <div class="flex-container">
+    <span class="toolbar-title">Controle de Coleções</span>
+    <button mat-fab color="accent" routerLink="/colecoes/new">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<table mat-table [dataSource]="colecoes" class="mat-elevation-z8">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Nome Column -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+  </ng-container>
+
+  <!-- Descrição Column -->
+  <ng-container matColumnDef="descricao">
+    <th mat-header-cell *matHeaderCellDef> Descrição </th>
+    <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+  </ng-container>
+
+  <!-- Pessoa Column -->
+  <ng-container matColumnDef="pessoa">
+    <th mat-header-cell *matHeaderCellDef> Pessoa </th>
+    <td mat-cell *matCellDef="let element"> {{element.pessoa.nome}} </td>
+  </ng-container>
+
+  <!-- Ação Column -->
+  <ng-container matColumnDef="acao">
+    <th mat-header-cell *matHeaderCellDef> Ação </th>
+    <td mat-cell *matCellDef="let element">
+      <a mat-icon-button color="primary" [routerLink]="'/colecoes/edit/' + element.id">
+        <mat-icon>edit</mat-icon>
+      </a>
+
+      <button mat-icon-button
+              color="warn">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Definição das colunas -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
