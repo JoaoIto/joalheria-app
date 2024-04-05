@@ -1,0 +1,43 @@
+<table mat-table [dataSource]="pedrasPreciosas" class="mat-elevation-z8">
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let pedraPreciosa"> {{ pedraPreciosa.pedra.id }} </td>
+  </ng-container>
+
+  <!-- Pedra Column -->
+  <ng-container matColumnDef="pedra">
+    <th mat-header-cell *matHeaderCellDef> Pedra </th>
+    <td mat-cell *matCellDef="let pedraPreciosa"> {{ pedraPreciosa.pedra.label }} </td>
+  </ng-container>
+
+  <!-- Peso Column -->
+  <ng-container matColumnDef="peso">
+    <th mat-header-cell *matHeaderCellDef> Peso </th>
+    <td mat-cell *matCellDef="let pedraPreciosa"> {{ pedraPreciosa.peso }} </td>
+  </ng-container>
+
+  <!-- Quantidade Column -->
+  <ng-container matColumnDef="quantidade">
+    <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+    <td mat-cell *matCellDef="let pedraPreciosa"> {{ pedraPreciosa.quantidade }} </td>
+  </ng-container>
+
+  <!-- Cor Column -->
+  <ng-container matColumnDef="cor">
+    <th mat-header-cell *matHeaderCellDef> Cor </th>
+    <td mat-cell *matCellDef="let pedraPreciosa"> {{ pedraPreciosa.cor.label }} </td>
+  </ng-container>
+
+  <!-- Ação Column -->
+  <ng-container matColumnDef="acao">
+    <th mat-header-cell *matHeaderCellDef> Ação </th>
+    <td mat-cell *matCellDef="let pedraPreciosa">
+      <!-- Adicione aqui os botões de ação, como editar e excluir -->
+    </td>
+  </ng-container>
+
+  <!-- Defina as colunas que serão exibidas na tabela -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

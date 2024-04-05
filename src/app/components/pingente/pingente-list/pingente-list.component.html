@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <div class="flex-container">
+    <span class="toolbar-title">Controle de Pingentes</span>
+    <button mat-fab color="accent" routerLink="/pingentes/new">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<table mat-table [dataSource]="pingentes" class="mat-elevation-z8">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Material Column -->
+  <ng-container matColumnDef="material">
+    <th mat-header-cell *matHeaderCellDef> Material </th>
+    <td mat-cell *matCellDef="let element"> {{element.material.label}} </td>
+  </ng-container>
+
+  <!-- Cor Column -->
+  <ng-container matColumnDef="cor">
+    <th mat-header-cell *matHeaderCellDef> Cor </th>
+    <td mat-cell *matCellDef="let element"> {{element.cor.label}} </td>
+  </ng-container>
+
+  <!-- Definição das colunas -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

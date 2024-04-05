@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {Estado} from "../../../interfaces/Estado";
-import {EstadoService} from "../../../services/estado.service";
 import {Pessoa} from "../../../interfaces/Pessoa";
 import {PessoaService} from "../../../services/pessoa.service";
 import {MatTableModule} from "@angular/material/table";
