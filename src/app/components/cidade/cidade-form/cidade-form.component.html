@@ -1,0 +1,110 @@
+<mat-toolbar color="primary" class="toolbar-title">Cadastro de Município</mat-toolbar>
+<div class="form-container">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="formGroup">
+        <mat-form-field appearance="fill" class="full-width-input">
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" formControlName="nome">
+          <mat-error *ngIf="formGroup.get('nome')
+                                   && formGroup.get('nome')?.invalid
+                                   && formGroup.get('nome')?.touched">
+            O nome é obrigatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="estado">
+            <mat-option *ngFor="let estado of estados" [value]="estado.id">
+              {{estado.sigla}}
+            </mat-option>
+          </mat-select>
+
+        </mat-form-field>
+        <!--                    <select formControlName="estado">-->
+        <!--                      <option disabled selected value="">Selecione um Estado</option>-->
+        <!--                      <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</option>-->
+        <!--                    </select>-->
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button
+              color="primary"
+              (click)="salvar()"
+              [disabled]="formGroup.invalid">
+        Salvar
+      </button>
+      <button mat-raised-button
+              *ngIf="formGroup?.get('id')?.value"
+              color="warn"
+              (click)="excluir()"
+              [disabled]="formGroup.invalid">
+        Excluir
+      </button>
+      <button mat-raised-button
+              routerLink="/cidades">
+        Cancelar
+      </button>
+
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<!--Painel Expansivo-->
+<!--<div class="expansion-panel">-->
+<!--  <mat-accordion class="example-headers-align" multi>-->
+<!--    <mat-expansion-panel>-->
+<!--      &lt;!&ndash;Capa do painel Cidade&ndash;&gt;-->
+<!--      <mat-expansion-panel-header>-->
+<!--        <mat-panel-title> Cidade </mat-panel-title>-->
+<!--        <mat-panel-description> Cadastre uma cidade </mat-panel-description>-->
+<!--      </mat-expansion-panel-header>-->
+<!--      &lt;!&ndash;Formulário para cadastro de cidade&ndash;&gt;-->
+<!--      <form [formGroup]="formGroup">-->
+<!--        &lt;!&ndash;Campo nome&ndash;&gt;-->
+<!--        <mat-form-field appearance="fill" class="full-width-input">-->
+<!--          <mat-label>Nome</mat-label>-->
+<!--          <input-->
+<!--            matInput-->
+<!--            type="text"-->
+<!--            title="Escreva o nome do estado"-->
+<!--            formControlName="nome"-->
+<!--          />-->
+<!--          <mat-error-->
+<!--            *ngIf="-->
+<!--              formGroup.get('nome') &&-->
+<!--              formGroup.get('nome')?.invalid &&-->
+<!--              formGroup.get('nome')?.touched-->
+<!--            "-->
+<!--          >-->
+<!--            O nome é obrigatório.-->
+<!--          </mat-error>-->
+<!--        </mat-form-field>-->
+<!--        &lt;!&ndash;Select Estado&ndash;&gt;-->
+<!--        <mat-form-field appearance="fill" class="full-width-input">-->
+<!--          <mat-label>Estado</mat-label>-->
+<!--          <mat-select formControlName="estado">-->
+<!--            <mat-option *ngFor="let estado of estados" [value]="estado">-->
+<!--              {{ estado.nome }}-->
+<!--            </mat-option>-->
+<!--          </mat-select>-->
+<!--        </mat-form-field>-->
+<!--      </form>-->
+<!--      &lt;!&ndash;Botão salvar&ndash;&gt;-->
+<!--      <button-->
+<!--        mat-raised-button-->
+<!--        title="Botão salvar"-->
+<!--        color="primary"-->
+<!--        (click)="salvar()"-->
+<!--        [disabled]="formGroup.invalid"-->
+<!--      >-->
+<!--        Salvar-->
+<!--      </button>-->
+<!--      &lt;!&ndash;Botão cancelar&ndash;&gt;-->
+<!--      <button mat-raised-button routerLink="/estados_cidades">Cancelar</button>-->
+<!--      &lt;!&ndash;&ndash;&gt;-->
+<!--    </mat-expansion-panel>-->
+<!--  </mat-accordion>-->
+<!--</div>-->

@@ -1,0 +1,55 @@
+<table mat-table [dataSource]="joias" class="mat-elevation-z8">
+  <!-- Nome Column -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let joia"> {{ joia.nome }} </td>
+  </ng-container>
+
+  <!-- Material Column -->
+  <ng-container matColumnDef="material">
+    <th mat-header-cell *matHeaderCellDef> Material </th>
+    <td mat-cell *matCellDef="let joia"> {{ joia.material.label }} </td>
+  </ng-container>
+
+  <!-- Descrição Column -->
+  <ng-container matColumnDef="descricao">
+    <th mat-header-cell *matHeaderCellDef> Descrição </th>
+    <td mat-cell *matCellDef="let joia"> {{ joia.descricao }} </td>
+  </ng-container>
+
+  <!-- Preço Column -->
+  <ng-container matColumnDef="preco">
+    <th mat-header-cell *matHeaderCellDef> Preço </th>
+    <td mat-cell *matCellDef="let joia"> {{ joia.preco }} </td>
+  </ng-container>
+
+  <!-- Estoque Column -->
+  <ng-container matColumnDef="estoque">
+    <th mat-header-cell *matHeaderCellDef> Estoque </th>
+    <td mat-cell *matCellDef="let joia"> {{ joia.estoque }} </td>
+  </ng-container>
+
+  <!-- Cor Column -->
+  <ng-container matColumnDef="cor">
+    <th mat-header-cell *matHeaderCellDef> Cor </th>
+    <td mat-cell *matCellDef="let joia"> {{ joia.cor.label }} </td>
+  </ng-container>
+
+  <!-- Peso Column -->
+  <ng-container matColumnDef="peso">
+    <th mat-header-cell *matHeaderCellDef> Peso </th>
+    <td mat-cell *matCellDef="let joia"> {{ joia.peso }} </td>
+  </ng-container>
+
+  <!-- Ação Column -->
+  <ng-container matColumnDef="acao">
+    <th mat-header-cell *matHeaderCellDef> Ação </th>
+    <td mat-cell *matCellDef="let joia">
+      <!-- Adicione aqui os botões de ação, como editar e excluir -->
+    </td>
+  </ng-container>
+
+  <!-- Defina as colunas que serão exibidas na tabela -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

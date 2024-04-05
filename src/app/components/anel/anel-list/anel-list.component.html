@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <div class="flex-container">
+    <span class="toolbar-title">Controle de Anéis</span>
+    <button mat-fab color="accent" routerLink="/aneis/new">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<table mat-table [dataSource]="aneis" class="mat-elevation-z8">
+
+  <!-- Tamanho Column -->
+  <ng-container matColumnDef="tamanho">
+    <th mat-header-cell *matHeaderCellDef> Tamanho </th>
+    <td mat-cell *matCellDef="let element"> {{element.tamanho}} </td>
+  </ng-container>
+
+  <!-- Imagem do Anel Column -->
+  <ng-container matColumnDef="imgAnel">
+    <th mat-header-cell *matHeaderCellDef> Imagem do Anel </th>
+    <td mat-cell *matCellDef="let element">
+      <img [src]="element.imgAnel" alt="Imagem do Anel" width="100" height="100">
+    </td>
+  </ng-container>
+
+  <!-- Definição das colunas -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
