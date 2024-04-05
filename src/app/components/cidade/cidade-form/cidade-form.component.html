@@ -1,0 +1,51 @@
+<mat-toolbar color="primary" class="toolbar-title">Cadastro de Município</mat-toolbar>
+<div class="form-container">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="formGroup">
+        <mat-form-field appearance="fill" class="full-width-input">
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" formControlName="nome">
+          <mat-error *ngIf="formGroup.get('nome')
+                                   && formGroup.get('nome')?.invalid
+                                   && formGroup.get('nome')?.touched">
+            O nome é obrigatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Estado</mat-label>
+<!--          <mat-select formControlName="estado">-->
+<!--            <mat-option disabled selected value="">Selecione um Estado</mat-option>-->
+<!--            <mat-option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</mat-option>-->
+<!--          </mat-select>-->
+                    <select formControlName="estado">
+                      <option disabled selected value="">Selecione um Estado</option>
+                      <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</option>
+                    </select>
+        </mat-form-field>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button
+              color="primary"
+              (click)="salvar()"
+              [disabled]="formGroup.invalid">
+        Salvar
+      </button>
+      <button mat-raised-button
+              *ngIf="formGroup?.get('id')?.value"
+              color="warn"
+              (click)="excluir()"
+              [disabled]="formGroup.invalid">
+        Excluir
+      </button>
+      <button mat-raised-button
+              routerLink="/cidades">
+        Cancelar
+      </button>
+
+    </mat-card-actions>
+  </mat-card>
+</div>
