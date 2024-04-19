@@ -151,6 +151,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule,
     RouterModule, NgForOf, MatSelectModule, MatExpansionModule],
   templateUrl: './cidade-form.component.html',
+  styleUrls: ['./cidade-form.component.css']
 })
 export class CidadeFormComponent implements OnInit {
 
