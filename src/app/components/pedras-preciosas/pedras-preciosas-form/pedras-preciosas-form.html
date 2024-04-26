@@ -1,0 +1,30 @@
+<form [formGroup]="formGroup" (ngSubmit)="salvar()">
+    <div>
+      <label for="pedra">Tipo de Pedra</label>
+      <select id="pedra" formControlName="idPedra">
+        <option disabled selected value="">Selecione um tipo de pedra</option>
+        <option *ngFor="let pedra of pedras" [value]="pedra.id">{{ pedra.label }}</option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="peso">Peso</label>
+      <input id="peso" type="text" formControlName="peso" placeholder="Peso">
+    </div>
+  
+    <div>
+      <label for="quantidade">Quantidade</label>
+      <input id="quantidade" type="number" formControlName="quantidade" placeholder="Quantidade">
+    </div>
+  
+    <div>
+      <label for="cor">Cor</label>
+      <select id="cor" formControlName="idCor">
+        <option disabled selected value="">Selecione uma cor</option>
+        <option *ngFor="let cor of cores" [value]="cor.id">{{ cor.label }}</option>
+      </select>
+    </div>
+  
+    <button type="submit">Salvar</button>
+  </form>
+  

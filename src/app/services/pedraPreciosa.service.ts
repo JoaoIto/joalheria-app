@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, catchError} from "rxjs";
 import {Joia} from "../interfaces/Joia";
 import {PedraPreciosa} from "../interfaces/PedraPreciosa";
 
@@ -15,5 +15,9 @@ export class PedraPreciosaService {
 
   getPedrasPreciosas(): Observable<PedraPreciosa[]> {
     return this.http.get<PedraPreciosa[]>(this.apiUrl);
+  }
+
+  insert(pedraPreciosa: PedraPreciosa): Observable<any> {
+    return this.http.post<PedraPreciosa>(`${this.apiUrl}`, pedraPreciosa)
   }
 }

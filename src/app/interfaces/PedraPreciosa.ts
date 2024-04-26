@@ -1,8 +1,8 @@
 import {Enum} from "./Enum";
 
 export interface PedraPreciosa {
-  pedra: Enum
+  idPedra: number
   peso: string;
   quantidade: number;
-  cor: Enum;
+  idCor: number;
 }

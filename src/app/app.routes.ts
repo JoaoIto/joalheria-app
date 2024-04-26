@@ -1,4 +1,4 @@
-import {Routes} from "@angular/router";
+  import {Routes} from "@angular/router";
 import {EstadoListComponent} from "./components/estado/estado-list/estado-list.component";
 import {PessoaListComponent} from "./components/pessoa/pessoa-list/pessoa-list.component";
 import {CidadeListComponent} from "./components/cidade/cidade-list/cidade-list.component";
@@ -13,6 +13,7 @@ import {CorrenteListComponent} from "./components/corrente/corrente-list/corrent
 import {PulseiraListComponent} from "./components/pulseira/pulseira-list/pulseira-list.component";
 import {AnelListComponent} from "./components/anel/anel-list/anel-list.component";
 import {PingenteListComponent} from "./components/pingente/pingente-list/pingente-list.component";
+import { PedrasPreciosasFormComponent } from "./components/pedras-preciosas/pedras-preciosas-form/pedras-preciosas-form";
 
 export const routes: Routes = [
   // Routes estados:
@@ -31,6 +32,7 @@ export const routes: Routes = [
 
   // Routes pedrasPreciosas:
   { path: 'pedrasPreciosas', component: PedrasPreciosasListComponent, title: 'Lista de Pedras Preciosas'},
+  { path: 'pedrasPreciosas/new', component: PedrasPreciosasFormComponent, title: 'Cadastro de Pedras Preciosas'},
 
   // Routes Joias:
   { path: 'joias', component: JoiaListComponent, title: 'Lista de Joias'},
