@@ -14,6 +14,7 @@ import {PulseiraListComponent} from "./components/pulseira/pulseira-list/pulseir
 import {AnelListComponent} from "./components/anel/anel-list/anel-list.component";
 import {PingenteListComponent} from "./components/pingente/pingente-list/pingente-list.component";
 import { PedrasPreciosasFormComponent } from "./components/pedras-preciosas/pedras-preciosas-form/pedras-preciosas-form";
+import { ColecaoFormComponent } from "./components/colecao/colecao-form/colecao-form.component";
 
 export const routes: Routes = [
   // Routes estados:
@@ -26,6 +27,7 @@ export const routes: Routes = [
 
   // Route Colecoes:
   { path: 'colecoes', component: ColecaoListComponent, title: 'Lista de Colecoes'},
+  { path: 'colecoes/new', component: ColecaoFormComponent, title: 'Cadastro de Colecoes'},
 
   //Route Pessoa:
   { path: 'pessoas', component: PessoaListComponent, title: 'Lista de Pessoas'},

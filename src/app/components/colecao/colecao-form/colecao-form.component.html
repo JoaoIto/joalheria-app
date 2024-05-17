@@ -1,0 +1,21 @@
+<form [formGroup]="formGroup" (ngSubmit)="salvar()">
+  <div>
+    <label for="pessoaId">Pessoa:</label>
+    <select id="pessoaId" formControlName="pessoaId">
+      <option value="" disabled selected>Selecione uma pessoa</option>
+      <option *ngFor="let pessoa of pessoas" [value]="pessoa.id">{{ pessoa.nome }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="nome">Nome da Coleção:</label>
+    <input id="nome" type="text" formControlName="nome" placeholder="Nome da Coleção">
+  </div>
+
+  <div>
+    <label for="descricao">Descrição:</label>
+    <input id="descricao" type="text" formControlName="descricao" placeholder="Descrição da Coleção">
+  </div>
+
+  <button type="submit">Salvar</button>
+</form>
