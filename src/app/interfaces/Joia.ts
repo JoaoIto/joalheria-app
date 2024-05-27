@@ -2,6 +2,7 @@ import {Enum} from "./Enum";
 import {PedraPreciosa} from "./PedraPreciosa";
 
 export interface Joia {
+  id: number;
   nome: string;
   idMaterial: number
   descricao: string;

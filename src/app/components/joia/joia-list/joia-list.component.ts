@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./joia-list.component.css']
 })
 export class JoiaListComponent {
-  displayedColumns: string[] = ['nome', 'material', 'descricao', 'preco', 'estoque', 'cor', 'peso'];
+  displayedColumns: string[] = ['id', 'nome', 'material', 'descricao', 'preco', 'estoque', 'cor', 'peso', 'acao'];
   joias: Joia[] = [];
 
   constructor(private router: Router, private joiaService: JoiaService) { }
@@ -31,5 +31,9 @@ export class JoiaListComponent {
     this.joiaService.getJoias()
       .subscribe(joias => this.joias = joias);
     console.log(this.joias);
+  }
+
+  editarJoia(joia: Joia): void {
+    this.router.navigate(['/joias/editar', joia.id]); // Supondo que exista um parâmetro de ID na rota de edição
   }
 }

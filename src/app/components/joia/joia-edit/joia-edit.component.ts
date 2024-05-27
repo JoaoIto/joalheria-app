@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { Enum } from '../../../interfaces/Enum';
-import { Cor } from 'src/app/enums/Cor';
-import { Pedra } from 'src/app/enums/Pedra';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { JoiaService } from 'src/app/services/joia.service';
+import { Joia } from 'src/app/interfaces/Joia';
 import { NgForOf, NgIf } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -17,12 +10,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
-import { Joia } from 'src/app/interfaces/Joia';
+import { Enum } from 'src/app/interfaces/Enum';
+import { Cor } from 'src/app/enums/Cor';
+import { Pedra } from 'src/app/enums/Pedra';
 
 @Component({
-  selector: 'app-joia-form',
+  selector: 'app-joia-edit',
   standalone: true,
   imports: [
     NgIf,
@@ -38,17 +33,19 @@ import { Joia } from 'src/app/interfaces/Joia';
     MatSelectModule,
     MatExpansionModule,
   ],
-  templateUrl: './joia-form.component.html',
-  styleUrls: ['./joia-form.component.css'],
+  templateUrl: './joia-edit.component.html',
+  styleUrls: ['./joia-edit.component.css']
 })
-export class JoiaFormComponent implements OnInit {
+export class JoiaEditComponent implements OnInit {
   formGroup: FormGroup;
+  joiaId: number = 0; // Inicialize a propriedade joiaId aqui
+  materiais: Enum[] = [];
   cores: Enum[] = [];
   pedras: Enum[] = [];
-  materiais: Enum[] = [];
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private joiaService: JoiaService
   ) {
@@ -84,8 +81,8 @@ export class JoiaFormComponent implements OnInit {
           value: Pedra[value as number],
         };
       });
-
-    // Assumindo que você tenha um serviço para obter materiais
+    this.joiaId = Number(this.route.snapshot.paramMap.get('id'));
+    this.carregarJoia();
     this.materiais = this.getMateriais();
   }
 
@@ -98,14 +95,21 @@ export class JoiaFormComponent implements OnInit {
     ];
   }
 
+  carregarJoia(): void {
+    this.joiaService.getJoiaById(this.joiaId)
+      .subscribe(joia => {
+        this.formGroup.patchValue(joia);
+      });
+  }
+
   voltar(): void {
     this.router.navigate(['/joias']);
   }
 
   salvar(): void {
     if (this.formGroup.valid) {
-      console.log(this.formGroup);
-      const joia: Partial<Joia> = {
+      const joia: Joia = {
+        id: this.joiaId,
         nome: this.formGroup.get('nome')?.value,
         idMaterial: parseInt(this.formGroup.get('idMaterial')?.value),
         descricao: this.formGroup.get('descricao')?.value,
@@ -116,16 +120,14 @@ export class JoiaFormComponent implements OnInit {
         peso: this.formGroup.get('peso')?.value,
       };
   
-      this.joiaService.insert(joia).subscribe(
+      this.joiaService.update(joia).subscribe(
         (response) => {
-          console.log('Joia inserida com sucesso:', response);
-          window.alert('Joia inserida com sucesso!');
-          setTimeout(() => {
-            window.location.href = '/joias';
-          }, 1500);
+          console.log('Joia atualizada com sucesso:', response);
+          window.alert('Joia atualizada com sucesso!');
+          this.router.navigate(['/joias']);
         },
         (error) => {
-          console.error('Erro ao inserir joia:', error);
+          console.error('Erro ao atualizar joia:', error);
         }
       );
     }
