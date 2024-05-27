@@ -15,6 +15,7 @@ import {AnelListComponent} from "./components/anel/anel-list/anel-list.component
 import {PingenteListComponent} from "./components/pingente/pingente-list/pingente-list.component";
 import { PedrasPreciosasFormComponent } from "./components/pedras-preciosas/pedras-preciosas-form/pedras-preciosas-form";
 import { ColecaoFormComponent } from "./components/colecao/colecao-form/colecao-form.component";
+import { JoiaFormComponent } from "./components/joia/joia-form/joia-form.component";
 
 export const routes: Routes = [
   // Routes estados:
@@ -38,6 +39,7 @@ export const routes: Routes = [
 
   // Routes Joias:
   { path: 'joias', component: JoiaListComponent, title: 'Lista de Joias'},
+  { path: 'joias/new', component: JoiaFormComponent, title: 'Cadastro de Joias'},
 
   // Routes correntes:
   { path: 'correntes', component: CorrenteListComponent, title: 'Lista de correntes'},

@@ -1,55 +1,68 @@
-<table mat-table [dataSource]="joias" class="mat-elevation-z8">
-  <!-- Nome Column -->
-  <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef> Nome </th>
-    <td mat-cell *matCellDef="let joia"> {{ joia.nome }} </td>
-  </ng-container>
+<!-- Botão para adicionar nova joia -->
+<div class="flex justify-end mb-4">
+  <button (click)="adicionarNovaJoia()" class="bg-blue-500 text-white p-4 m-4 rounded-md shadow-blue-950 shadow-md hover:bg-blue-600 transition duration-300">
+    +
+  </button>
+</div>
 
-  <!-- Material Column -->
-  <ng-container matColumnDef="material">
-    <th mat-header-cell *matHeaderCellDef> Material </th>
-    <td mat-cell *matCellDef="let joia"> {{ joia.material.label }} </td>
-  </ng-container>
+<!-- Centraliza a tabela -->
+<div class="flex justify-center">
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-semibold py-2">Tabela de Joias</h2>
+    <table mat-table [dataSource]="joias" class="mat-elevation-z8 w-full bg-white shadow-lg shadow-slate-600 rounded">
+      <!-- Nome Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Nome </th>
+        <td mat-cell *matCellDef="let joia" class="px-4 py-2"> {{ joia.nome }} </td>
+      </ng-container>
 
-  <!-- Descrição Column -->
-  <ng-container matColumnDef="descricao">
-    <th mat-header-cell *matHeaderCellDef> Descrição </th>
-    <td mat-cell *matCellDef="let joia"> {{ joia.descricao }} </td>
-  </ng-container>
+      <!-- Material Column -->
+      <ng-container matColumnDef="material">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Material </th>
+        <td mat-cell *matCellDef="let joia" class="px-4 py-2"> {{ joia.material.label }} </td>
+      </ng-container>
 
-  <!-- Preço Column -->
-  <ng-container matColumnDef="preco">
-    <th mat-header-cell *matHeaderCellDef> Preço </th>
-    <td mat-cell *matCellDef="let joia"> {{ joia.preco }} </td>
-  </ng-container>
+      <!-- Descrição Column -->
+      <ng-container matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Descrição </th>
+        <td mat-cell *matCellDef="let joia" class="px-4 py-2"> {{ joia.descricao }} </td>
+      </ng-container>
 
-  <!-- Estoque Column -->
-  <ng-container matColumnDef="estoque">
-    <th mat-header-cell *matHeaderCellDef> Estoque </th>
-    <td mat-cell *matCellDef="let joia"> {{ joia.estoque }} </td>
-  </ng-container>
+      <!-- Preço Column -->
+      <ng-container matColumnDef="preco">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Preço </th>
+        <td mat-cell *matCellDef="let joia" class="px-4 py-2"> {{ joia.preco }} </td>
+      </ng-container>
 
-  <!-- Cor Column -->
-  <ng-container matColumnDef="cor">
-    <th mat-header-cell *matHeaderCellDef> Cor </th>
-    <td mat-cell *matCellDef="let joia"> {{ joia.cor.label }} </td>
-  </ng-container>
+      <!-- Estoque Column -->
+      <ng-container matColumnDef="estoque">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Estoque </th>
+        <td mat-cell *matCellDef="let joia" class="px-4 py-2"> {{ joia.estoque }} </td>
+      </ng-container>
 
-  <!-- Peso Column -->
-  <ng-container matColumnDef="peso">
-    <th mat-header-cell *matHeaderCellDef> Peso </th>
-    <td mat-cell *matCellDef="let joia"> {{ joia.peso }} </td>
-  </ng-container>
+      <!-- Cor Column -->
+      <ng-container matColumnDef="cor">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Cor </th>
+        <td mat-cell *matCellDef="let joia" class="px-4 py-2"> {{ joia.cor.label }} </td>
+      </ng-container>
 
-  <!-- Ação Column -->
-  <ng-container matColumnDef="acao">
-    <th mat-header-cell *matHeaderCellDef> Ação </th>
-    <td mat-cell *matCellDef="let joia">
-      <!-- Adicione aqui os botões de ação, como editar e excluir -->
-    </td>
-  </ng-container>
+      <!-- Peso Column -->
+      <ng-container matColumnDef="peso">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Peso </th>
+        <td mat-cell *matCellDef="let joia" class="px-4 py-2"> {{ joia.peso }} </td>
+      </ng-container>
 
-  <!-- Defina as colunas que serão exibidas na tabela -->
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+      <!-- Ação Column -->
+      <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Ação </th>
+        <td mat-cell *matCellDef="let joia" class="px-4 py-2">
+          <!-- Adicione aqui os botões de ação, como editar e excluir -->
+        </td>
+      </ng-container>
+
+      <!-- Defina as colunas que serão exibidas na tabela -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-gray-100"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="border-b border-gray-200"></tr>
+    </table>
+  </div>
+</div>

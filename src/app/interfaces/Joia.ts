@@ -3,11 +3,11 @@ import {PedraPreciosa} from "./PedraPreciosa";
 
 export interface Joia {
   nome: string;
-  material: Enum
+  idMaterial: number
   descricao: string;
-  listaPedras: PedraPreciosa[]
+  listaIdsPedras: number[]
   preco: number;
   estoque: number;
-  cor: Enum;
+  idCor: number;
   peso: number;
 }
