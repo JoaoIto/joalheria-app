@@ -1,43 +1,56 @@
-<table mat-table [dataSource]="pedrasPreciosas" class="mat-elevation-z8">
-  <!-- ID Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let pedraPreciosa"> {{ pedraPreciosa.pedra.id }} </td>
-  </ng-container>
+<!-- Botão para adicionar nova pedra preciosa -->
+<div class="flex justify-end mb-4">
+  <button (click)="adicionarNovaPedraPreciosa()" class="bg-blue-500 text-white p-4 m-4 rounded-md shadow-blue-950 shadow-md hover:bg-blue-600 transition duration-300">
+    +
+  </button>
+</div>
 
-  <!-- Pedra Column -->
-  <ng-container matColumnDef="pedra">
-    <th mat-header-cell *matHeaderCellDef> Pedra </th>
-    <td mat-cell *matCellDef="let pedraPreciosa"> {{ pedraPreciosa.pedra.label }} </td>
-  </ng-container>
+<!-- Centraliza a tabela -->
+<div class="flex justify-center">
+  <div class="w-full max-w-4xl">
+    <h2 class="text-2xl font-semibold py-2">Tabela de Pedras Preciosas</h2>
+    <table mat-table [dataSource]="pedrasPreciosas" class="mat-elevation-z8 w-full bg-white shadow-lg shadow-slate-600 rounded">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> ID </th>
+        <td mat-cell *matCellDef="let pedraPreciosa" class="px-4 py-2"> {{ pedraPreciosa.id }} </td>
+      </ng-container>
 
-  <!-- Peso Column -->
-  <ng-container matColumnDef="peso">
-    <th mat-header-cell *matHeaderCellDef> Peso </th>
-    <td mat-cell *matCellDef="let pedraPreciosa"> {{ pedraPreciosa.peso }} </td>
-  </ng-container>
+      <!-- Pedra Column -->
+      <ng-container matColumnDef="pedra">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Pedra </th>
+        <td mat-cell *matCellDef="let pedraPreciosa" class="px-4 py-2"> {{ pedraPreciosa.label }} </td>
+      </ng-container>
 
-  <!-- Quantidade Column -->
-  <ng-container matColumnDef="quantidade">
-    <th mat-header-cell *matHeaderCellDef> Quantidade </th>
-    <td mat-cell *matCellDef="let pedraPreciosa"> {{ pedraPreciosa.quantidade }} </td>
-  </ng-container>
+      <!-- Peso Column -->
+      <ng-container matColumnDef="peso">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Peso </th>
+        <td mat-cell *matCellDef="let pedraPreciosa" class="px-4 py-2"> {{ pedraPreciosa.peso }} </td>
+      </ng-container>
 
-  <!-- Cor Column -->
-  <ng-container matColumnDef="cor">
-    <th mat-header-cell *matHeaderCellDef> Cor </th>
-    <td mat-cell *matCellDef="let pedraPreciosa"> {{ pedraPreciosa.cor.label }} </td>
-  </ng-container>
+      <!-- Quantidade Column -->
+      <ng-container matColumnDef="quantidade">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Quantidade </th>
+        <td mat-cell *matCellDef="let pedraPreciosa" class="px-4 py-2"> {{ pedraPreciosa.quantidade }} </td>
+      </ng-container>
 
-  <!-- Ação Column -->
-  <ng-container matColumnDef="acao">
-    <th mat-header-cell *matHeaderCellDef> Ação </th>
-    <td mat-cell *matCellDef="let pedraPreciosa">
-      <!-- Adicione aqui os botões de ação, como editar e excluir -->
-    </td>
-  </ng-container>
+      <!-- Cor Column -->
+      <ng-container matColumnDef="cor">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Cor </th>
+        <td mat-cell *matCellDef="let pedraPreciosa" class="px-4 py-2"> {{ pedraPreciosa.cor.label }} </td>
+      </ng-container>
 
-  <!-- Defina as colunas que serão exibidas na tabela -->
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+      <!-- Ação Column -->
+      <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left"> Ação </th>
+        <td mat-cell *matCellDef="let pedraPreciosa" class="px-4 py-2">
+          <!-- Adicione aqui os botões de ação, como editar e excluir -->
+        </td>
+      </ng-container>
+
+      <!-- Defina as colunas que serão exibidas na tabela -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-gray-100"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="border-b border-gray-200"></tr>
+    </table>
+  </div>
+</div>

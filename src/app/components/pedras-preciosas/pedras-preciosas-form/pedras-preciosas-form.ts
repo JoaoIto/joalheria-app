@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PedraPreciosa } from "../../../interfaces/PedraPreciosa";
-import { Enum } from "../../../interfaces/Enum";
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { PedraPreciosa } from '../../../interfaces/PedraPreciosa';
+import { Enum } from '../../../interfaces/Enum';
 import { Cor } from 'src/app/enums/Cor';
 import { Pedra } from 'src/app/enums/Pedra';
 import { PedraPreciosaService } from 'src/app/services/pedraPreciosa.service';
@@ -12,63 +18,83 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-pedras-preciosas-form',
   standalone: true,
-  imports: [NgIf, FormsModule, ReactiveFormsModule, MatFormFieldModule,
-    MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule,
-    RouterModule, NgForOf, MatSelectModule, MatExpansionModule],
+  imports: [
+    NgIf,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    RouterModule,
+    NgForOf,
+    MatSelectModule,
+    MatExpansionModule,
+  ],
   templateUrl: './pedras-preciosas-form.html',
-  styleUrls: ['./pedras-preciosas-form.css']
+  styleUrls: ['./pedras-preciosas-form.css'],
 })
 export class PedrasPreciosasFormComponent implements OnInit {
-
   formGroup: FormGroup;
   cores: Enum[] = [];
   pedras: Enum[] = [];
 
-  constructor(private formBuilder: FormBuilder, private pedrasPreciosasService: PedraPreciosaService) {
-
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private pedrasPreciosasService: PedraPreciosaService
+  ) {
     this.formGroup = formBuilder.group({
       idPedra: ['', Validators.required],
       peso: ['', Validators.required],
       quantidade: ['', Validators.required],
-      idCor: ['', Validators.required]
+      idCor: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
-    this.cores = Object.values(Cor).filter(value => typeof value === 'number').map(value => {
+    this.cores = Object.values(Cor)
+      .filter((value) => typeof value === 'number')
+      .map((value) => {
         return {
           id: value as number,
           label: Cor[value as number],
-          value: Cor[value as number]
+          value: Cor[value as number],
         };
       });
-    
-      this.pedras = Object.values(Pedra).filter(value => typeof value === 'number').map(value => {
+
+    this.pedras = Object.values(Pedra)
+      .filter((value) => typeof value === 'number')
+      .map((value) => {
         return {
           id: value as number,
           label: Pedra[value as number],
-          value: Pedra[value as number]
+          value: Pedra[value as number],
         };
       });
   }
-   
+
+  voltar(): void {
+    this.router.navigate(['/pedrasPreciosas']);
+  }
 
   salvar() {
     if (this.formGroup.valid) {
-        console.log(this.formGroup);
-        
+      console.log(this.formGroup);
+
       // Get form control values
       const pedraId = parseInt(this.formGroup.get('idPedra')?.value);
       const peso = this.formGroup.get('peso')?.value;
       const quantidade = this.formGroup.get('quantidade')?.value;
       const corId = parseInt(this.formGroup.get('idCor')?.value);
-  
+
       // Check if controls have values before accessing properties
       if (pedraId !== null && corId !== null) {
         // Create a new PedraPreciosa object with converted values
@@ -76,15 +102,20 @@ export class PedrasPreciosasFormComponent implements OnInit {
           idPedra: pedraId,
           peso: peso,
           quantidade: quantidade,
-          idCor: corId
+          idCor: corId,
         };
-  
+
         // Call service to insert pedra preciosa
         this.pedrasPreciosasService.insert(pedraPreciosa).subscribe(
-          response => {
+          (response) => {
             console.log('Pedra preciosa inserida com sucesso:', response);
+            window.alert('Pedra preciosa inserida com sucesso!');
+            setTimeout(() => {
+              // Redireciona para a rota /pedrasPreciosas após 3 segundos
+              window.location.href = '/pedrasPreciosas';
+            }, 1500); // 3000 milissegundos = 3 segundos
           },
-          error => {
+          (error) => {
             console.error('Erro ao inserir pedra preciosa:', error);
           }
         );
@@ -93,5 +124,4 @@ export class PedrasPreciosasFormComponent implements OnInit {
       }
     }
   }
-  
 }
