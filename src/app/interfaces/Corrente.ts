@@ -1,10 +1,12 @@
 import {Enum} from "./Enum";
+import { Joia } from "./Joia";
 import {Pingente} from "./Pingente";
 
 export interface Corrente {
+  joiaDTO: Partial<Joia>
   comprimento: number;
-  tipoFecho: Enum;
-  tipoElo: Enum;
-  imgProduto: string;
-  pingente: Pingente
+  idFecho: number;
+  idElo: number;
+  imgCorrente: string;
+  idPingente: number
 }

@@ -17,6 +17,7 @@ import { PedrasPreciosasFormComponent } from "./components/pedras-preciosas/pedr
 import { ColecaoFormComponent } from "./components/colecao/colecao-form/colecao-form.component";
 import { JoiaFormComponent } from "./components/joia/joia-form/joia-form.component";
 import { JoiaEditComponent } from "./components/joia/joia-edit/joia-edit.component";
+import { CorrenteFormComponent } from "./components/corrente/corrente-form/corrente-form.component";
 
 export const routes: Routes = [
   // Routes estados:
@@ -45,6 +46,8 @@ export const routes: Routes = [
 
   // Routes correntes:
   { path: 'correntes', component: CorrenteListComponent, title: 'Lista de correntes'},
+  { path: 'correntes/new', component: CorrenteFormComponent, title: 'Cadastro de correntes'},
+
 
   // Routes pulseiras:
   { path: 'pulseiras', component: PulseiraListComponent, title: 'Lista de pulseiras'},

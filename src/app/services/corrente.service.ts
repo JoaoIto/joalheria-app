@@ -16,4 +16,8 @@ export class CorrenteService {
   getCorrentes(): Observable<Corrente[]> {
     return this.http.get<Corrente[]>(this.apiUrl);
   }
+
+  insert(corrente: Partial<Corrente>): Observable<any> {
+    return this.http.post<Corrente>(`${this.apiUrl}`, corrente);
+  }
 }
