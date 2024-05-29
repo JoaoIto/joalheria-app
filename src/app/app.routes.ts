@@ -18,6 +18,7 @@ import { ColecaoFormComponent } from "./components/colecao/colecao-form/colecao-
 import { JoiaFormComponent } from "./components/joia/joia-form/joia-form.component";
 import { JoiaEditComponent } from "./components/joia/joia-edit/joia-edit.component";
 import { CorrenteFormComponent } from "./components/corrente/corrente-form/corrente-form.component";
+import { PulseiraFormComponent } from "./components/pulseira/pulseira-form/pulseira-form.component";
 
 export const routes: Routes = [
   // Routes estados:
@@ -51,6 +52,7 @@ export const routes: Routes = [
 
   // Routes pulseiras:
   { path: 'pulseiras', component: PulseiraListComponent, title: 'Lista de pulseiras'},
+  { path: 'pulseiras/new', component: PulseiraFormComponent, title: 'Cadastro de pulseiras'},
 
   // Routes aneis:
   { path: 'aneis', component: AnelListComponent, title: 'Lista de aneis'},
