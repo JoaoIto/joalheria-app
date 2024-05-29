@@ -121,7 +121,7 @@ export class JoiaFormComponent implements OnInit {
           console.log('Joia inserida com sucesso:', response);
           window.alert('Joia inserida com sucesso!');
           setTimeout(() => {
-            window.location.href = '/joias';
+            this.router.navigate(['/joias']);
           }, 1500);
         },
         (error) => {
