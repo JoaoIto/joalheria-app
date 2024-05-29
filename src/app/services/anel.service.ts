@@ -16,4 +16,8 @@ export class AnelService {
   getAneis(): Observable<Anel[]> {
     return this.http.get<Anel[]>(this.apiUrl);
   }
+
+  insert(anel: Partial<Anel>): Observable<any> {
+    return this.http.post<Anel>(`${this.apiUrl}`, anel);
+  }
 }

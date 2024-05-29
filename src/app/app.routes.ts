@@ -19,6 +19,7 @@ import { JoiaFormComponent } from "./components/joia/joia-form/joia-form.compone
 import { JoiaEditComponent } from "./components/joia/joia-edit/joia-edit.component";
 import { CorrenteFormComponent } from "./components/corrente/corrente-form/corrente-form.component";
 import { PulseiraFormComponent } from "./components/pulseira/pulseira-form/pulseira-form.component";
+import { AnelFormComponent } from "./components/anel/anel-form/anel-form.component";
 
 export const routes: Routes = [
   // Routes estados:
@@ -56,6 +57,7 @@ export const routes: Routes = [
 
   // Routes aneis:
   { path: 'aneis', component: AnelListComponent, title: 'Lista de aneis'},
+  { path: 'aneis/new', component: AnelFormComponent, title: 'Cadastro de aneis'},
 
   // Routes pingentes:
   { path: 'pingentes', component: PingenteListComponent, title: 'Lista de pingentes'},
