@@ -1,0 +1,35 @@
+<div class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-cover bg-center h-screen w-full" style="background-image: url('https://image.lexica.art/full_webp/1736304c-68d6-47b2-b335-985ab8a5e0af');">
+      <div class="bg-black bg-opacity-50 h-full flex flex-col items-center justify-center">
+        <h1 class="text-white text-4xl font-bold">JoalheriaApp</h1>
+        <p class="text-white">Desenvolvido por <a class="hover:text-blue-700 hover:shadow-lg transition" href="http://github.com/JoaoIto">JoaoIto</a> e <a class="hover:text-blue-700 hover:shadow-lg transition" href="http://github.com/thiagoshowza">Thiago Showza</a></p>
+      </div>
+    </header>
+  
+    <!-- Products Section -->
+    <main class="container mx-auto px-4 py-8 flex-1">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Pulseiras</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <!-- Iterar sobre as pulseiras e exibir cada uma -->
+          <div *ngFor="let pulseira of pulseiras" class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+            <!-- <img [src]="pulseira.imgCorrente" alt="Imagem do Produto" class="w-full h-48 object-cover mb-4 rounded"> --> 
+            <h3 class="text-xl font-semibold mb-2">pulseira</h3>
+            <p class="text-gray-700 mb-2">Comprimento: {{ pulseira.comprimento }}</p>
+            <!-- <p class="text-gray-700 mb-2">Tipo de Fecho: {{ pulseira.tipoFecho.label }}</p>
+            <p class="text-gray-700 mb-2">Tipo de Elo: {{ pulseira.tipoElo.label }}</p> -->
+            <!-- Botão de compra -->
+            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+      <div class="container mx-auto px-4 text-center">
+        <p>Desenvolvido por <a class="hover:text-blue-700 hover:shadow-lg transition" href="http://github.com/JoaoIto">JoaoIto</a> e <a class="hover:text-blue-700 hover:shadow-lg transition" href="http://github.com/thiagoshowza">Thiago Showza</a></p>
+      </div>
+    </footer>
+</div>

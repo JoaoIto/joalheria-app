@@ -22,11 +22,16 @@ import { PulseiraFormComponent } from "./components/pulseira/pulseira-form/pulse
 import { AnelFormComponent } from "./components/anel/anel-form/anel-form.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { AdminComponent } from "./components/dashboard/admin/admin.component";
+import { CorrentesComponent } from "./components/client/correntes/correntes.component";
+import { PulseirasComponent } from "./components/client/pulseiras/pulseiras.component";
+import { AneisComponent } from "./components/client/aneis/aneis.component";
 
 export const routes: Routes = [
   // Routes client
   {path: '', component: DashboardComponent, title: 'Dashboard'},
-
+  {path: 'client/correntes', component: CorrentesComponent, title: 'Correntes'},
+  {path: 'client/pulseiras', component: PulseirasComponent, title: 'Pulseiras'},
+  {path: 'client/aneis', component: AneisComponent, title: 'Aneis'},
 
   // Routes admin
   {path: 'admin/dashboard', component: AdminComponent, title: 'Dashboard Admin'},
