@@ -20,8 +20,12 @@ import { JoiaEditComponent } from "./components/joia/joia-edit/joia-edit.compone
 import { CorrenteFormComponent } from "./components/corrente/corrente-form/corrente-form.component";
 import { PulseiraFormComponent } from "./components/pulseira/pulseira-form/pulseira-form.component";
 import { AnelFormComponent } from "./components/anel/anel-form/anel-form.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 export const routes: Routes = [
+  // Routes client
+  {path: '', component: DashboardComponent, title: 'Dashboard'},
+
   // Routes estados:
   { path: 'estados', component: EstadoListComponent, title: 'Lista de Estados'},
 
