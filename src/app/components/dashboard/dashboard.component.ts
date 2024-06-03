@@ -45,13 +45,13 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  /* onSearch(event: Event): void {
-    const query = (event.target as HTMLInputElement).value.toLowerCase();
-    this.categories.forEach(category => {
-      category.products = category.products.filter(product =>
-        product.name.toLowerCase().includes(query) ||
-        product.description.toLowerCase().includes(query)
-      );
-    });
-  } */
+  // onSearch(event: Event): void {
+  //   const query = (event.target as HTMLInputElement).value.toLowerCase();
+  //   this.categories.forEach(category => {
+  //     category.products = category.products.filter(product =>
+  //       product.joiaDTO.nome.toLowerCase().includes(query) ||
+  //       product.joiaDTO.descricao.toLowerCase().includes(query)
+  //     );
+  //   });
+  // }
 }

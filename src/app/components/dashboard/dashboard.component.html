@@ -24,10 +24,20 @@
         <h2 class="text-2xl font-bold mb-4">{{ category.title }}</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <div *ngFor="let product of category.products" class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-            <!-- <img 
-              [src]="product.imgCorrente || product.imgPulseira || product.imgAnel" 
-              alt="{{ product.joiaDTO.nome }}" 
-              class="w-full h-48 object-cover mb-4 rounded"> -->
+            <!-- <div [ngSwitch]="category.title">
+              <img *ngSwitchCase="'Correntes'"
+                   [src]="product.imgCorrente" 
+                   alt="{{ product.joiaDTO.nome }}" 
+                   class="w-full h-48 object-cover mb-4 rounded">
+              <img *ngSwitchCase="'Pulseiras'"
+                   [src]="product.imgPulseira" 
+                   alt="{{ product.joiaDTO.nome }}" 
+                   class="w-full h-48 object-cover mb-4 rounded">
+              <img *ngSwitchCase="'Anéis'"
+                   [src]="product.imgAnel" 
+                   alt="{{ product.joiaDTO.nome }}" 
+                   class="w-full h-48 object-cover mb-4 rounded">
+            </div> -->
             <h3 class="text-xl font-semibold mb-2">{{ product.joiaDTO.nome }}</h3>
             <p class="text-gray-700 mb-2">{{ product.joiaDTO.descricao }}</p>
             <p class="text-gray-900 font-bold mb-2">{{ product.joiaDTO.preco | currency }}</p>
