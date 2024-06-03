@@ -26,11 +26,15 @@ import { CorrentesComponent } from "./components/client/correntes/correntes.comp
 import { PulseirasComponent } from "./components/client/pulseiras/pulseiras.component";
 import { AneisComponent } from "./components/client/aneis/aneis.component";
 import { CarrinhoComponent } from "./components/client/carrinho/carrinho.component";
+import { PagamentoComponent } from "./components/client/pagamento/pagamento.component";
+import { PagamentoCartaoComponent } from "./components/client/pagamento/pagamento-cartao/pagamento-cartao.component";
 
 export const routes: Routes = [
   // Routes client
   {path: '', component: DashboardComponent, title: 'Dashboard'},
   {path: 'carrinho', component: CarrinhoComponent, title: 'Carrinho'},
+  {path: 'pagamento', component: PagamentoComponent, title: 'Pagamento'},
+  {path: 'pagamento/cartao', component: PagamentoCartaoComponent, title: 'Pagamento-Cartão'},
   {path: 'client/correntes', component: CorrentesComponent, title: 'Correntes'},
   {path: 'client/pulseiras', component: PulseirasComponent, title: 'Pulseiras'},
   {path: 'client/aneis', component: AneisComponent, title: 'Aneis'},
