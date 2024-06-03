@@ -25,10 +25,12 @@ import { AdminComponent } from "./components/dashboard/admin/admin.component";
 import { CorrentesComponent } from "./components/client/correntes/correntes.component";
 import { PulseirasComponent } from "./components/client/pulseiras/pulseiras.component";
 import { AneisComponent } from "./components/client/aneis/aneis.component";
+import { CarrinhoComponent } from "./components/client/carrinho/carrinho.component";
 
 export const routes: Routes = [
   // Routes client
   {path: '', component: DashboardComponent, title: 'Dashboard'},
+  {path: 'carrinho', component: CarrinhoComponent, title: 'Carrinho'},
   {path: 'client/correntes', component: CorrentesComponent, title: 'Correntes'},
   {path: 'client/pulseiras', component: PulseirasComponent, title: 'Pulseiras'},
   {path: 'client/aneis', component: AneisComponent, title: 'Aneis'},

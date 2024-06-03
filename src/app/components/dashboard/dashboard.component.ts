@@ -6,11 +6,13 @@ import { AnelService } from 'src/app/services/anel.service';
 import { Anel } from 'src/app/interfaces/Anel';
 import { Pulseira } from 'src/app/interfaces/Pulseira';
 import { Corrente } from 'src/app/interfaces/Corrente';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule, RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
