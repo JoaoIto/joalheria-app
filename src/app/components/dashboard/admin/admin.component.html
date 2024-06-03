@@ -1,0 +1,10 @@
+<h1 class="flex self-center justify-center w-full text-2xl p-4">Rotas para administrador</h1>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+    <div *ngFor="let route of routes" class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+      <h3 class="text-xl font-semibold mb-2">{{ route.title }}</h3>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+      [routerLink]="['/' + route.path]">Ir para {{ route.title }}</button>
+
+    </div>
+  </div>
+  

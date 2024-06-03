@@ -21,10 +21,15 @@ import { CorrenteFormComponent } from "./components/corrente/corrente-form/corre
 import { PulseiraFormComponent } from "./components/pulseira/pulseira-form/pulseira-form.component";
 import { AnelFormComponent } from "./components/anel/anel-form/anel-form.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { AdminComponent } from "./components/dashboard/admin/admin.component";
 
 export const routes: Routes = [
   // Routes client
   {path: '', component: DashboardComponent, title: 'Dashboard'},
+
+
+  // Routes admin
+  {path: 'admin/dashboard', component: AdminComponent, title: 'Dashboard Admin'},
 
   // Routes estados:
   { path: 'estados', component: EstadoListComponent, title: 'Lista de Estados'},
