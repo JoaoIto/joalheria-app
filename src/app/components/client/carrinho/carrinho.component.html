@@ -9,7 +9,7 @@
     </nav>
 
     <!-- Conteúdo do carrinho -->
-    <main class="container mx-auto px-4 py-8 flex-1">
+    <main class="container flex gap-2 flex-col mx-auto px-4 py-8 flex-1">
         <h2 class="text-2xl font-bold mb-4">Carrinho</h2>
         <div *ngIf="carrinhoItens.length > 0; else emptyCart">
             <!-- Renderizar os itens do carrinho -->
@@ -21,8 +21,9 @@
             <!-- Mensagem de carrinho vazio -->
             <p class="text-red-500">Não há itens no carrinho</p>
             <!-- Botão para ir para a dashboard -->
-            <button mat-button routerLink="/" class="bg-red-600 rounded p-2 text-white hover:bg-blue-700 hover:shadow-lg transition">Comprar Agora</button>
+            <button mat-button routerLink="/" class="bg-red-600 rounded p-2 text-white hover:bg-red-700 hover:shadow-lg transition">Comprar Agora</button>
         </ng-template>
+        <button mat-button routerLink="/pagamento" class="bg-blue-600 rounded p-2 text-white hover:bg-blue-700 hover:shadow-lg transition">Finalizar Compra</button>
     </main>
 
     <!-- Footer -->
