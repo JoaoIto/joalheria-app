@@ -9,21 +9,29 @@
     </nav>
 
     <!-- Conteúdo do carrinho -->
-    <main class="container flex gap-2 flex-col mx-auto px-4 py-8 flex-1">
+    <main class="container mx-auto px-4 py-8 flex-1">
         <h2 class="text-2xl font-bold mb-4">Carrinho</h2>
         <div *ngIf="carrinhoItens.length > 0; else emptyCart">
             <!-- Renderizar os itens do carrinho -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Aqui você pode iterar sobre os itens do carrinho e exibir cada um -->
+                <div *ngFor="let carrinhoItem of carrinhoItens" class="bg-white rounded-lg shadow-md p-4 mb-4">
+                    <h3 class="text-3xl font-semibold mb-4">{{ carrinhoItem.pessoa.nome }}</h3>
+                    <div *ngFor="let item of carrinhoItem.itens" class="bg-gray-200 rounded-lg p-4 mb-4 border-2 border-solid border-slate-500">
+                        <h4 class="text-xl font-semibold mb-2">{{ joias[item.idJoia]?.nome }}</h4>
+                        <p class="text-gray-600">{{ joias[item.idJoia]?.descricao }}</p>
+                        <p class="text-gray-800 font-bold mt-2">Preço: R$ {{ joias[item.idJoia]?.preco }}</p>
+                        <!-- Adicione mais campos da joia conforme necessário -->
+                    </div>
+                </div>
             </div>
+            <button mat-button routerLink="/pagamento" class="bg-blue-600 rounded p-2 text-white hover:bg-blue-700 hover:shadow-lg transition">Finalizar Compra</button>
         </div>
-        <ng-template #emptyCart>
+        <ng-template class="" #emptyCart>
             <!-- Mensagem de carrinho vazio -->
             <p class="text-red-500">Não há itens no carrinho</p>
             <!-- Botão para ir para a dashboard -->
-            <button mat-button routerLink="/" class="bg-red-600 rounded p-2 text-white hover:bg-red-700 hover:shadow-lg transition">Comprar Agora</button>
+            <button mat-button routerLink="/" class="bg-red-600 rounded p-2 text-white hover:bg-blue-700 hover:shadow-lg transition">Comprar Agora</button>
         </ng-template>
-        <button mat-button routerLink="/pagamento" class="bg-blue-600 rounded p-2 text-white hover:bg-blue-700 hover:shadow-lg transition">Finalizar Compra</button>
     </main>
 
     <!-- Footer -->
