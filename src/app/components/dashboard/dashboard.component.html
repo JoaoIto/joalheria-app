@@ -30,15 +30,17 @@
     </header>
   
     <!-- Search -->
-    <!-- <div class="py-4 bg-white shadow-md">
-      <div class="container mx-auto px-4">
+    <div class="py-4 bg-white shadow-md">
+      <div class="container m-2 px-4">
+        <label class="text-2xl" for="search">Pesquisar por uma joia: </label>
         <input 
+          id="search"
           type="text" 
           placeholder="Buscar produtos..." 
           class="w-full p-2 border border-gray-300 rounded"
-          (input)="onSearch($event)">
+          >
       </div>
-    </div> -->
+    </div>
   
     <!-- Products Section -->
     <main class="container mx-auto px-4 py-8 flex-1">
@@ -46,13 +48,13 @@
         <h2 class="text-2xl font-bold mb-4">{{ category.title }}</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <div *ngFor="let product of category.products" class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-           <!--  <img 
-              [src]="product.imgProduto || product.imgPulseira || product.imgAnel" 
+            <img 
+              [src]="product.tipo === 'corrente' ? product.imgProduto : (product.tipo === 'pulseira' ? product.imgPulseira : product.imgAnel)" 
               alt="{{ product.joiaDTO.nome }}" 
-              class="w-full h-48 object-cover mb-4 rounded"> -->
+              class="w-full h-48 object-cover mb-4 rounded">
             <h3 class="text-xl font-semibold mb-2">{{ product.joiaDTO.nome }}</h3>
             <p class="text-gray-700 mb-2">{{ product.joiaDTO.descricao }}</p>
-            <p class="text-gray-900 font-bold mb-2">{{ product.joiaDTO.preco}}</p>
+            <p class="text-gray-900 font-bold mb-2">{{ product.joiaDTO.preco }}</p>
             <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Adicionar ao Carrinho</button>
           </div>
         </div>

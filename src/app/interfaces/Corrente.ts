@@ -3,10 +3,11 @@ import { Joia } from "./Joia";
 import {Pingente} from "./Pingente";
 
 export interface Corrente {
+  tipo: 'corrente';
   joiaDTO: Partial<Joia>
   comprimento: number;
   idFecho: number;
   idElo: number;
-  imgCorrente: string;
+  imgProduto: string;
   idPingente: number
 }

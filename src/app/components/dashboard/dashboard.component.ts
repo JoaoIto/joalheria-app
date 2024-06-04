@@ -35,14 +35,17 @@ export class DashboardComponent implements OnInit {
 
   loadProducts(): void {
     this.correntesService.getCorrentes().subscribe((products: Corrente[]) => {
+      console.log('Correntes:', products);
       this.categories[0].products = products;
     });
 
     this.pulseirasService.getPulseiras().subscribe((products: Pulseira[]) => {
+      console.log('Pulseiras:', products);
       this.categories[1].products = products;
     });
 
     this.aneisService.getAneis().subscribe((products: Anel[]) => {
+      console.log('Anéis:', products);
       this.categories[2].products = products;
     });
   }
