@@ -11,7 +11,7 @@
     <!-- Conteúdo do carrinho -->
     <main class="container mx-auto px-4 py-8 flex-1">
         <h2 class="text-2xl font-bold mb-4">Carrinho</h2>
-        <div *ngIf="carrinhoItens.length > 0; else emptyCart">
+        <div class="gap-2" *ngIf="carrinhoItens.length > 0; else emptyCart">
             <!-- Renderizar os itens do carrinho -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div *ngFor="let carrinhoItem of carrinhoItens" class="bg-white rounded-lg shadow-md p-4 mb-4">
@@ -24,13 +24,14 @@
                     </div>
                 </div>
             </div>
+            <div class="flex gap-2">
+            <button mat-button routerLink="/" class="bg-red-600 rounded p-2 text-white hover:bg-red-700 hover:shadow-lg transition">Comprar Mais</button>
             <button mat-button routerLink="/pagamento" class="bg-blue-600 rounded p-2 text-white hover:bg-blue-700 hover:shadow-lg transition">Finalizar Compra</button>
+        </div>
         </div>
         <ng-template class="" #emptyCart>
             <!-- Mensagem de carrinho vazio -->
             <p class="text-red-500">Não há itens no carrinho</p>
-            <!-- Botão para ir para a dashboard -->
-            <button mat-button routerLink="/" class="bg-red-600 rounded p-2 text-white hover:bg-blue-700 hover:shadow-lg transition">Comprar Agora</button>
         </ng-template>
     </main>
 
