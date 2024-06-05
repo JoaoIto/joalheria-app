@@ -7,7 +7,9 @@ import { Anel } from 'src/app/interfaces/Anel';
 import { Pulseira } from 'src/app/interfaces/Pulseira';
 import { Corrente } from 'src/app/interfaces/Corrente';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { ItemPedido } from 'src/app/interfaces/ItemPedido';
+import { ItemPedidoService } from 'src/app/services/itens-pedido.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +28,9 @@ export class DashboardComponent implements OnInit {
   constructor(
     private correntesService: CorrenteService,
     private pulseirasService: PulseiraService,
-    private aneisService: AnelService
+    private aneisService: AnelService,
+    private itemPedidoService: ItemPedidoService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +53,38 @@ export class DashboardComponent implements OnInit {
       this.categories[2].products = products;
     });
   }
+
+  adicionarAoCarrinho(product: Anel | Corrente | Pulseira): void {
+    console.log(product);
+    let tipoPedido: string;
+
+    // Verifica a categoria do produto e define o tipo de pedido
+    if (this.categories[0].products.includes(product)) {
+      tipoPedido = 'CORRENTE';
+    } else if (this.categories[1].products.includes(product)) {
+      tipoPedido = 'PULSEIRA';
+    } else if (this.categories[2].products.includes(product)) {
+      tipoPedido = 'ANEL';
+    } else {
+      console.error('Tipo de produto desconhecido:', product);
+      return;
+    }
+
+    const itemPedidoDTO: ItemPedido = {
+      quantidade: 1,
+      idPedido: product.id,
+      tipoPedido: tipoPedido
+    };
+
+    console.log(itemPedidoDTO);
+
+    this.itemPedidoService.postItemPedido(itemPedidoDTO).subscribe(() => {
+      // Navegar para a página do carrinho após adicionar o item
+      this.router.navigate(['/carrinho']);
+    });
+}
+
+
 
   // onSearch(event: Event): void {
   //   const query = (event.target as HTMLInputElement).value.toLowerCase();
