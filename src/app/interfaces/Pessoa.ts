@@ -1,7 +1,7 @@
 import {Endereco} from "./Endereco";
 
 export interface Pessoa {
-  id: string;
+  id: number;
   nome: string;
   senha: string;
   cpf: string;

@@ -15,4 +15,8 @@ export class PulseiraService {
   getPulseiras(): Observable<Pulseira[]> {
     return this.http.get<Pulseira[]>(this.apiUrl);
   }
+
+  insert(pulseira: Partial<Pulseira>): Observable<any> {
+    return this.http.post<Pulseira>(`${this.apiUrl}`, pulseira);
+  }
 }

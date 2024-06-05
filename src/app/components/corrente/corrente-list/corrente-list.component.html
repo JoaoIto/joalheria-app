@@ -1,49 +1,51 @@
 <mat-toolbar color="primary">
-  <div class="flex-container">
-    <span class="toolbar-title">Controle de Correntes</span>
-    <button mat-fab color="accent" routerLink="/cidades/new">
+  <div class="flex justify-between w-full">
+    <span class="text-white text-lg">Controle de Correntes</span>
+    <button mat-fab color="accent" routerLink="/correntes/new" class="bg-blue-500 hover:bg-blue-700 transition duration-300">
       <mat-icon>add</mat-icon>
     </button>
   </div>
 </mat-toolbar>
 
-<table mat-table [dataSource]="correntes" class="mat-elevation-z8">
-
-  <!-- Comprimento Column -->
-  <ng-container matColumnDef="comprimento">
-    <th mat-header-cell *matHeaderCellDef> Comprimento </th>
-    <td mat-cell *matCellDef="let element"> {{element.comprimento}} </td>
-  </ng-container>
-
-  <!-- Tipo de Fecho Column -->
-  <ng-container matColumnDef="tipoFecho">
-    <th mat-header-cell *matHeaderCellDef> Tipo de Fecho </th>
-    <td mat-cell *matCellDef="let element"> {{element.tipoFecho.label}} </td>
-  </ng-container>
-
-  <!-- Tipo de Elo Column -->
-  <ng-container matColumnDef="tipoElo">
-    <th mat-header-cell *matHeaderCellDef> Tipo de Elo </th>
-    <td mat-cell *matCellDef="let element"> {{element.tipoElo.label}} </td>
-  </ng-container>
-
-  <!-- Imagem do Produto Column -->
-  <ng-container matColumnDef="imgProduto">
-    <th mat-header-cell *matHeaderCellDef> Imagem do Produto </th>
-    <td mat-cell *matCellDef="let element">
-      <img [src]="element.imgProduto" alt="Imagem do Produto" width="100" height="100">
-    </td>
-  </ng-container>
-
-  <!-- Pingente Column -->
-  <ng-container matColumnDef="pingente">
-    <th mat-header-cell *matHeaderCellDef> Pingente </th>
-    <td mat-cell *matCellDef="let element">
-      {{element.pingente ? element.pingente.nome : 'Nenhum'}}
-    </td>
-  </ng-container>
-
-  <!-- Definição das colunas -->
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+<div class="overflow-x-auto mt-4">
+  <table mat-table [dataSource]="correntes" class="mat-elevation-z8 min-w-full bg-white border border-gray-200">
+    
+    <!-- Comprimento Column -->
+    <ng-container matColumnDef="comprimento">
+      <th mat-header-cell *matHeaderCellDef class="py-2 px-4 border-b"> Comprimento </th>
+      <td mat-cell *matCellDef="let element" class="py-2 px-4 border-b"> {{element.comprimento}} </td>
+    </ng-container>
+    
+    <!-- Tipo de Fecho Column -->
+    <ng-container matColumnDef="tipoFecho">
+      <th mat-header-cell *matHeaderCellDef class="py-2 px-4 border-b"> Tipo de Fecho </th>
+      <td mat-cell *matCellDef="let element" class="py-2 px-4 border-b"> {{element.tipoFecho.label}} </td>
+    </ng-container>
+    
+    <!-- Tipo de Elo Column -->
+    <ng-container matColumnDef="tipoElo">
+      <th mat-header-cell *matHeaderCellDef class="py-2 px-4 border-b"> Tipo de Elo </th>
+      <td mat-cell *matCellDef="let element" class="py-2 px-4 border-b"> {{element.tipoElo.label}} </td>
+    </ng-container>
+    
+      <!-- Imagem do Produto Column -->
+      <ng-container matColumnDef="imgProduto">
+        <th mat-header-cell *matHeaderCellDef class="py-2 px-4 border-b"> Imagem do Produto </th>
+        <td mat-cell *matCellDef="let element" class="py-2 px-4 border-b">
+          <img [src]="element.imgProduto" alt="Imagem do Produto" class="w-24 h-24 object-cover">
+        </td>
+      </ng-container>
+    
+    <!-- Pingente Column -->
+    <ng-container matColumnDef="pingente">
+      <th mat-header-cell *matHeaderCellDef class="py-2 px-4 border-b"> Pingente </th>
+      <td mat-cell *matCellDef="let element" class="py-2 px-4 border-b">
+        {{element.pingente ? element.pingente.nome : 'Nenhum'}}
+      </td>
+    </ng-container>
+    
+    <!-- Definição das colunas -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover:bg-gray-100 transition duration-200"></tr>
+  </table>
+</div>

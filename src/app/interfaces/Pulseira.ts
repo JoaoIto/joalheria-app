@@ -1,10 +1,14 @@
 import {Enum} from "./Enum";
+import { Joia } from "./Joia";
 import {Pingente} from "./Pingente";
 
 export interface Pulseira {
+  id: number;
+  tipo: 'pulseira';
+  joiaDTO: Partial<Joia>;
   comprimento: number;
-  tipoFecho: Enum;
-  tipoElo: Enum;
+  idFecho: number;
+  idElo: number;
   imgPulseira: string;
-  pingente: Pingente
+  idPingente: number
 }

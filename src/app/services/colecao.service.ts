@@ -29,17 +29,17 @@ export class ColecaoService {
     }
     return this.http.post<Colecao>(this.apiUrl, data);
   }
-  update(colecao: Colecao): Observable<Colecao> {
+  /* update(colecao: Colecao): Observable<Colecao> {
     const data = {
       nome: colecao.nome,
       descricao: colecao.descricao,
       idPessoa: colecao.pessoa.id
     }
     return this.http.put<Colecao>(`${this.apiUrl}/${colecao.id}`, data);
-  }
+  } */
 
-  delete(colecao: Colecao): Observable<any> {
+ /*  delete(colecao: Colecao): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${colecao.id}`);
-  }
+  } */
 
 }

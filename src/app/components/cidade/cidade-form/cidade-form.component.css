@@ -1,31 +1,160 @@
-.toolbar-title {
-  flex: 1;
-  text-align: center;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 78%;
+    margin-top: 70px;
+    margin-left: 280px;
+
+    font-family: "Lato", sans-serif;
 }
 
-.full-width-input {
-  width: 100%;
-  margin-bottom: 20px;
+h2 {
+    font-size: 25px;
 }
 
-mat-card {
-  max-width: 800px;
-  margin: 2rem auto;
+a {
+    text-decoration: none; 
+    display: inline-block; 
+    border-bottom: none; 
+    margin: 0px 0px;
+    padding: 5px; 
 }
 
-mat-card-actions {
-  display: flex;
-  justify-content: flex-end;
+.content {
+    background-color: #33BDFE;
+    color: #fff;
+
+    border: 2px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 15px; 
+
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+form {
+    margin-top: -5px;
+    border: 1px solid #33BDFE;
+    border-radius: 10px;
+    padding: 25px; 
+    height: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
 }
 
-.form-container {
-  padding: 2rem;
+.fill {
+    display: flex;
+    flex-direction: column;
 }
 
-button[mat-raised-button] {
-  width: 120px;
+.fill label {
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 700;
 }
 
-button[mat-raised-button]:not(:last-child) {
-  margin-right: 1rem;
+.fill input:focus input {
+    flex: 3;
+    font-size: 15px;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid #808080;
+    transition: border-color 0.3s ease;
+
+}
+
+.fill input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+select{
+    flex: 3;
+    font-size: 15px;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    width: 35px;
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid #808080;
+    transition: border-color 0.3s ease;
+}
+
+mat-error{
+    color: #f36b7f;
+    font-family: "Lato", sans-serif;
+    font-size: 10px;
+}
+
+select{
+    flex: 3;
+    font-size: 15px;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid #808080;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.bnt-cadastro{
+    color: #e8eef1;
+    background-color: #007bff;
+    border: 1px solid;
+    margin-top: 45px;
+    padding: auto;
+    height: 40px;
+    width: 90px;
+    font-size: 10px;
+}
+#nome{
+    width: 320px;
+}
+#estado{
+    width: 120px;
+}
+
+.bnt-group{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+
+    margin-top: 15px;
+}
+
+button{
+    height: 50px;
+    width: 130px;
+    margin: 25px 0;
+    font-size: 16px;
+    color: #fff;
+
+    text-decoration: none;
+    border-radius: 10px;
+    border-style: none;
+    cursor: pointer;
+}
+.btn-cancelar{
+    background: #808080;
+}
+.btn-excluir{
+    background: #f36b7f;
+}
+.btn-salvar{
+    background: #33BDFE;
 }

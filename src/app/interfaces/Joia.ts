@@ -2,12 +2,13 @@ import {Enum} from "./Enum";
 import {PedraPreciosa} from "./PedraPreciosa";
 
 export interface Joia {
+  id: number;
   nome: string;
-  material: Enum
+  idMaterial: number
   descricao: string;
-  listaPedras: PedraPreciosa[]
+  listaIdsPedras: number[]
   preco: number;
   estoque: number;
-  cor: Enum;
+  idCor: number;
   peso: number;
 }

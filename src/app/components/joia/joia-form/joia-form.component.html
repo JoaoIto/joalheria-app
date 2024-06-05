@@ -1,0 +1,61 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
+      <form [formGroup]="formGroup" (ngSubmit)="salvar()">
+        <h2 class="text-2xl font-semibold py-2">Cadastro de Nova Joia</h2>
+  
+        <div class="mb-4">
+          <label for="nome" class="block text-gray-700 font-bold mb-2">Nome</label>
+          <input id="nome" type="text" formControlName="nome" placeholder="Nome" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+        </div>
+  
+        <div class="mb-4">
+          <label for="material" class="block text-gray-700 font-bold mb-2">Material</label>
+          <select id="material" formControlName="idMaterial" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+            <option disabled selected value="">Selecione um material</option>
+            <option *ngFor="let material of materiais" [value]="material.id">{{ material.label }}</option>
+          </select>
+        </div>
+  
+        <div class="mb-4">
+          <label for="descricao" class="block text-gray-700 font-bold mb-2">Descrição</label>
+          <textarea id="descricao" formControlName="descricao" placeholder="Descrição" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"></textarea>
+        </div>
+  
+        <div class="mb-4">
+          <label for="preco" class="block text-gray-700 font-bold mb-2">Preço</label>
+          <input id="preco" type="number" formControlName="preco" placeholder="Preço" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+        </div>
+  
+        <div class="mb-4">
+          <label for="estoque" class="block text-gray-700 font-bold mb-2">Estoque</label>
+          <input id="estoque" type="number" formControlName="estoque" placeholder="Estoque" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+        </div>
+  
+        <div class="mb-4">
+          <label for="cor" class="block text-gray-700 font-bold mb-2">Cor</label>
+          <select id="cor" formControlName="idCor" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+            <option disabled selected value="">Selecione uma cor</option>
+            <option *ngFor="let cor of cores" [value]="cor.id">{{ cor.label }}</option>
+          </select>
+        </div>
+  
+        <div class="mb-4">
+          <label for="peso" class="block text-gray-700 font-bold mb-2">Peso</label>
+          <input id="peso" type="number" formControlName="peso" placeholder="Peso" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+        </div>
+  
+        <div class="mb-4">
+          <label for="listaIdsPedras" class="block text-gray-700 font-bold mb-2">Pedras</label>
+          <select id="listaIdsPedras" formControlName="listaIdsPedras" multiple class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+            <option *ngFor="let pedra of pedras" [value]="pedra.id">{{ pedra.label }}</option>
+          </select>
+        </div>
+  
+        <div class="flex justify-between">
+          <button type="button" (click)="voltar()" class="bg-gray-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-gray-600 transition duration-300">Voltar</button>
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-300">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
