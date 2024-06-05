@@ -6,7 +6,18 @@
         <p class="text-white">Escolha sua forma de pagamento</p>
       </div>
     </header>
-  
+  <!--Pedido informações - Pagamento-->
+    <section class="container mx-auto px-4 py-8 flex-1">
+      <h2 class="text-2xl font-bold mb-4">Informações do pagamento</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div *ngFor="let pagamento of pagamentos" class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-2">Dados do pagamento</h3>
+          <p class="text-gray-700 mb-4">Valor Total: R$ {{ pagamento.valorTotal }}</p>
+          <p class="text-gray-700 mb-4">Status: {{ pagamento.status.label }}</p>
+          <p class="text-gray-700 mb-4">Data do Pagamento: {{ pagamento.dataPagamento }}</p>
+       </div>
+      </div>
+    </section>
     <!-- Payment Options Section -->
     <main class="container mx-auto px-4 py-8 flex-1">
       <h2 class="text-2xl font-bold mb-4">Escolha a forma de pagamento</h2>
