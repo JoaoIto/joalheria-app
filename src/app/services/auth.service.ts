@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageService } from './local-storage.service';
 import { Usuario } from '../interfaces/Usuario';
+import { CadastroDTO } from '../interfaces/Cadastro';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,21 @@ export class AuthService {
     }
   }
 
+  cadastro(cadastroData: CadastroDTO): Observable<any> {
+    return this.http.post(`${this.baseURL}/cadastro`, cadastroData, {observe: 'response'}).pipe(
+      tap((res: any) => {
+        const authToken = res.headers.get('Authorization') ?? '';
+        if (authToken) {
+          this.setToken(authToken);
+          const usuarioLogado = res.body;
+          if (usuarioLogado) {
+            this.setUsuarioLogado(usuarioLogado);
+            this.usuarioLogadoSubject.next(usuarioLogado);
+          }
+        }
+      })
+    );
+  }
 
   login(email: string, senha: string): Observable<any> {
     const params = {

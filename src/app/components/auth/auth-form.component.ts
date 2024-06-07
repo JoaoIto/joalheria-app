@@ -42,4 +42,9 @@ export class AuthComponent {
       }
     );
   }
+
+  goToRegister(): void {
+    // Navega para a página de cadastro
+    this.router.navigate(['/cadastro']);
+  }
 }
