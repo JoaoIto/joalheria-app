@@ -31,12 +31,14 @@ import { PagamentoCartaoComponent } from "./components/client/pagamento/pagament
 import { AuthComponent } from "./components/auth/auth-form.component";
 import { CadastroComponent } from "./components/auth/cadastro/cadastro.component";
 import { PerfilLogadoComponent } from "./components/perfil/perfil-logado/perfil-logado.component";
+import { AlterarSenhaComponent } from "./components/perfil/perfil-logado/alterar-senha/alterar-senha.component";
 
 export const routes: Routes = [
   // Routes client
   {path: '', component: DashboardComponent, title: 'Dashboard'},
   {path: 'login', component: AuthComponent, title: 'Login'},
   {path: 'user', component: PerfilLogadoComponent, title: 'Usuario logado'},
+  {path: 'user/alterar-senha', component: AlterarSenhaComponent, title: 'Alterar senha'},
   {path: 'cadastro', component: CadastroComponent, title: 'Cadastro'},
   {path: 'carrinho', component: CarrinhoComponent, title: 'Carrinho'},
   {path: 'pagamento', component: PagamentoComponent, title: 'Pagamento'},

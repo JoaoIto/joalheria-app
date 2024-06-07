@@ -74,6 +74,11 @@ export class AuthService {
     );
   }
 
+  alterarSenha(email: string, novaSenha: string): Observable<any> {
+    const params = { novaSenha: novaSenha }; // Ajuste para enviar novaSenha como 'novaSenha'
+    return this.http.put(`${this.baseURL}/trocarSenha?email=${email}`, null, { params }); // Envie email como QueryParam
+  }
+
   setUsuarioLogado(usuario: Usuario): void {
     this.localStorageService.setItem(this.usuarioLogadoKey, usuario);
   }

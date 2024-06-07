@@ -45,4 +45,8 @@ export class PerfilLogadoComponent implements OnInit {
     this.localStorageService.removeItem('usuario_logado');
     this.router.navigate(['/login']);
   }
+
+  redirecionarAlterarSenha(): void {
+    this.router.navigate(['/user/alterar-senha']);
+  }
 }
