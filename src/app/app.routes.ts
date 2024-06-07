@@ -28,10 +28,12 @@ import { AneisComponent } from "./components/client/aneis/aneis.component";
 import { CarrinhoComponent } from "./components/client/carrinho/carrinho.component";
 import { PagamentoComponent } from "./components/client/pagamento/pagamento.component";
 import { PagamentoCartaoComponent } from "./components/client/pagamento/pagamento-cartao/pagamento-cartao.component";
+import { AuthComponent } from "./components/auth/auth-form.component";
 
 export const routes: Routes = [
   // Routes client
   {path: '', component: DashboardComponent, title: 'Dashboard'},
+  {path: 'login', component: AuthComponent, title: 'Login'},
   {path: 'carrinho', component: CarrinhoComponent, title: 'Carrinho'},
   {path: 'pagamento', component: PagamentoComponent, title: 'Pagamento'},
   {path: 'pagamento/cartao', component: PagamentoCartaoComponent, title: 'Pagamento-Cartão'},
