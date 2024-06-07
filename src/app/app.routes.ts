@@ -30,11 +30,13 @@ import { PagamentoComponent } from "./components/client/pagamento/pagamento.comp
 import { PagamentoCartaoComponent } from "./components/client/pagamento/pagamento-cartao/pagamento-cartao.component";
 import { AuthComponent } from "./components/auth/auth-form.component";
 import { CadastroComponent } from "./components/auth/cadastro/cadastro.component";
+import { PerfilLogadoComponent } from "./components/perfil/perfil-logado/perfil-logado.component";
 
 export const routes: Routes = [
   // Routes client
   {path: '', component: DashboardComponent, title: 'Dashboard'},
   {path: 'login', component: AuthComponent, title: 'Login'},
+  {path: 'user', component: PerfilLogadoComponent, title: 'Usuario logado'},
   {path: 'cadastro', component: CadastroComponent, title: 'Cadastro'},
   {path: 'carrinho', component: CarrinhoComponent, title: 'Carrinho'},
   {path: 'pagamento', component: PagamentoComponent, title: 'Pagamento'},

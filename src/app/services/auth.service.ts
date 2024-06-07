@@ -5,6 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageService } from './local-storage.service';
 import { Usuario } from '../interfaces/Usuario';
 import { CadastroDTO } from '../interfaces/Cadastro';
+import { Perfil } from '../interfaces/Perfil';
 
 @Injectable({
   providedIn: 'root'
@@ -81,8 +82,8 @@ export class AuthService {
     this.localStorageService.setItem(this.tokenKey, token);
   }
 
-  getUsuarioLogado() {
-    return this.usuarioLogadoSubject.asObservable();
+  getUsuarioLogado(): Perfil {
+    return this.localStorageService.getItem('usuario_logado');
   }
 
   getToken(): string | null {
