@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
 import { ItemPedido } from 'src/app/interfaces/ItemPedido';
 import { ItemPedidoService } from 'src/app/services/itens-pedido.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,11 +31,19 @@ export class DashboardComponent implements OnInit {
     private pulseirasService: PulseiraService,
     private aneisService: AnelService,
     private itemPedidoService: ItemPedidoService,
+    private localStorageService: LocalStorageService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loadProducts();
+  }
+
+  logout(): void {
+    // Limpar o token do local storage
+    this.localStorageService.removeItem('token');
+    // Redirecionar para a página de login
+    this.router.navigate(['/login']);
   }
 
   loadProducts(): void {

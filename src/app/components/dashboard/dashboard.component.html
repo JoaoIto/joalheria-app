@@ -4,68 +4,145 @@
     <div class="container mx-auto px-4 text-center">
       <ul class="flex justify-center">
         <li class="mr-6">
-          <a href="/client/correntes" class="hover:text-blue-700 hover:shadow-lg transition">Correntes</a>
+          <a
+            href="/client/correntes"
+            class="hover:text-blue-700 hover:shadow-lg transition"
+            >Correntes</a
+          >
         </li>
         <li class="mr-6">
-          <a href="/client/aneis" class="hover:text-blue-700 hover:shadow-lg transition">Anéis</a>
+          <a
+            href="/client/aneis"
+            class="hover:text-blue-700 hover:shadow-lg transition"
+            >Anéis</a
+          >
         </li>
         <li>
-          <a href="/client/pulseiras" class="hover:text-blue-700 hover:shadow-lg transition">Pulseiras</a>
+          <a
+            href="/client/pulseiras"
+            class="hover:text-blue-700 hover:shadow-lg transition"
+            >Pulseiras</a
+          >
+        </li>
+        <!-- Botão de logout -->
+        <li>
+          <button
+            (click)="logout()"
+            class="text-red-400 hover:red-700 hover:shadow-lg transition"
+          >
+            Logout
+          </button>
         </li>
         <li>
           <!-- Ícone de carrinho e botão de navegação -->
-          <button class="w-full flex justify-end" mat-icon-button routerLink="/carrinho" aria-label="Ir para o carrinho">
+          <button
+            class="w-full flex justify-end"
+            mat-icon-button
+            routerLink="/carrinho"
+            aria-label="Ir para o carrinho"
+          >
             <mat-icon>shopping_cart</mat-icon>
-        </button>
-        </li> 
+          </button>
+        </li>
       </ul>
     </div>
   </nav>
-    <!-- Header -->
-    <header class="bg-cover bg-center h-screen w-full" style="background-image: url('https://image.lexica.art/full_webp/2bf420ad-3dd9-4436-81e1-efe59ccc4570');">
-      <div class="bg-black bg-opacity-50 h-full flex flex-col items-center justify-center">
-        <h1 class="text-white text-4xl font-bold">JoalheriaApp</h1>
-        <p class="text-white">Desenvolvido por <a class="hover:text-blue-700 hover:shadow-lg transition" href="http://github.com/JoaoIto">JoaoIto</a> e <a class="hover:text-blue-700 hover:shadow-lg transition" href="http://github.com/thiagoshowza">Thiago Showza</a></p>
-      </div>
-    </header>
-  
-    <!-- Search -->
-    <div class="py-4 bg-white shadow-md">
-      <div class="container m-2 px-4">
-        <label class="text-2xl" for="search">Pesquisar por uma joia: </label>
-        <input 
-          id="search"
-          type="text" 
-          placeholder="Buscar produtos..." 
-          class="w-full p-2 border border-gray-300 rounded"
-          >
-      </div>
+  <!-- Header -->
+  <header
+    class="bg-cover bg-center h-screen w-full"
+    style="
+      background-image: url('https://image.lexica.art/full_webp/2bf420ad-3dd9-4436-81e1-efe59ccc4570');
+    "
+  >
+    <div
+      class="bg-black bg-opacity-50 h-full flex flex-col items-center justify-center"
+    >
+      <h1 class="text-white text-4xl font-bold">JoalheriaApp</h1>
+      <p class="text-white">
+        Desenvolvido por
+        <a
+          class="hover:text-blue-700 hover:shadow-lg transition"
+          href="http://github.com/JoaoIto"
+          >JoaoIto</a
+        >
+        e
+        <a
+          class="hover:text-blue-700 hover:shadow-lg transition"
+          href="http://github.com/thiagoshowza"
+          >Thiago Showza</a
+        >
+      </p>
     </div>
-  
-    <!-- Products Section -->
-    <main class="container mx-auto px-4 py-8 flex-1">
-      <div *ngFor="let category of categories" class="mb-8">
-        <h2 class="text-2xl font-bold mb-4">{{ category.title }}</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div *ngFor="let product of category.products" class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-            <img 
-              [src]="product.tipo === 'corrente' ? product.imgProduto : (product.tipo === 'pulseira' ? product.imgPulseira : product.imgAnel)" 
-              alt="{{ product.joiaDTO.nome }}" 
-              class="w-full h-48 object-cover mb-4 rounded">
-            <h3 class="text-xl font-semibold mb-2">{{ product.joiaDTO.nome }}</h3>
-            <p class="text-gray-700 mb-2">{{ product.joiaDTO.descricao }}</p>
-            <p class="text-gray-900 font-bold mb-2">{{ product.joiaDTO.preco }}</p>
-            <button (click)="adicionarAoCarrinho(product)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Adicionar ao Carrinho</button>
-          </div>
+  </header>
+
+  <!-- Search -->
+  <div class="py-4 bg-white shadow-md">
+    <div class="container m-2 px-4">
+      <label class="text-2xl" for="search">Pesquisar por uma joia: </label>
+      <input
+        id="search"
+        type="text"
+        placeholder="Buscar produtos..."
+        class="w-full p-2 border border-gray-300 rounded"
+      />
+    </div>
+  </div>
+
+  <!-- Products Section -->
+  <main class="container mx-auto px-4 py-8 flex-1">
+    <div *ngFor="let category of categories" class="mb-8">
+      <h2 class="text-2xl font-bold mb-4">{{ category.title }}</h2>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+      >
+        <div
+          *ngFor="let product of category.products"
+          class="bg-white p-4 rounded shadow hover:shadow-lg transition"
+        >
+          <img
+            [src]="
+              product.tipo === 'corrente'
+                ? product.imgProduto
+                : product.tipo === 'pulseira'
+                ? product.imgPulseira
+                : product.imgAnel
+            "
+            alt="{{ product.joiaDTO.nome }}"
+            class="w-full h-48 object-cover mb-4 rounded"
+          />
+          <h3 class="text-xl font-semibold mb-2">{{ product.joiaDTO.nome }}</h3>
+          <p class="text-gray-700 mb-2">{{ product.joiaDTO.descricao }}</p>
+          <p class="text-gray-900 font-bold mb-2">
+            {{ product.joiaDTO.preco }}
+          </p>
+          <button
+            (click)="adicionarAoCarrinho(product)"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            Adicionar ao Carrinho
+          </button>
         </div>
       </div>
-    </main>
-  
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-4">
-      <div class="container mx-auto px-4 text-center">
-        <p>Desenvolvido por <a class="hover:text-blue-700 hover:shadow-lg transition" href="http://github.com/JoaoIto">JoaoIto</a> e <a class="hover:text-blue-700 hover:shadow-lg transition" href="http://github.com/thiagoshowza">Thiago Showza</a></p>
-      </div>
-    </footer>
-  </div>
-  
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto px-4 text-center">
+      <p>
+        Desenvolvido por
+        <a
+          class="hover:text-blue-700 hover:shadow-lg transition"
+          href="http://github.com/JoaoIto"
+          >JoaoIto</a
+        >
+        e
+        <a
+          class="hover:text-blue-700 hover:shadow-lg transition"
+          href="http://github.com/thiagoshowza"
+          >Thiago Showza</a
+        >
+      </p>
+    </div>
+  </footer>
+</div>
