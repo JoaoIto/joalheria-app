@@ -5,5 +5,5 @@ export interface Anel {
   tipo: 'anel';
   joiaDTO: Partial<Joia>;
   tamanho: number,
-  imgAnel: string;
+  nomeImagem: string;
 }

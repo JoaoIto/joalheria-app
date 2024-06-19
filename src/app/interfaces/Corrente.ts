@@ -9,6 +9,6 @@ export interface Corrente {
   comprimento: number;
   idFecho: number;
   idElo: number;
-  imgProduto: string;
+  nomeImagem: string;
   idPingente: number
 }

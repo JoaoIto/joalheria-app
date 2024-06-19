@@ -9,6 +9,6 @@ export interface Pulseira {
   comprimento: number;
   idFecho: number;
   idElo: number;
-  imgPulseira: string;
+  nomeImagem: string;
   idPingente: number
 }
