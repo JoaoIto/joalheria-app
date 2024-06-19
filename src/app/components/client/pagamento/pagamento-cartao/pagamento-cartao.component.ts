@@ -36,7 +36,8 @@ export class PagamentoCartaoComponent {
     this.pagamentoService.realizarPagamento(pagamentoData).subscribe(() => {
       // Redirecionar para outra rota após o pagamento ser realizado com sucesso
       window.alert("Pagamento Realizado!")
-      this.router.navigate(['/']);
+      const pedidoJson = localStorage.removeItem('pedido');
+      this.router.navigate(['/pagamento']);
     }, error => {
       console.error('Erro ao realizar o pagamento:', error);
       // Tratar erros ou mostrar uma mensagem de erro para o usuário

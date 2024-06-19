@@ -41,7 +41,8 @@ export class DashboardComponent implements OnInit {
 
   logout(): void {
     // Limpar o token do local storage
-    this.localStorageService.removeItem('token');
+    this.localStorageService.removeItem('jwt_token');
+    this.localStorageService.removeItem('usuario_logado');
     // Redirecionar para a página de login
     this.router.navigate(['/login']);
   }
