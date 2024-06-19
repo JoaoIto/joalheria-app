@@ -1,26 +1,42 @@
 <div class="bg-gray-100 min-h-screen flex flex-col">
    <!-- Navbar -->
    <nav class="bg-gray-800 text-white py-4">
-    <div class="container mx-auto px-4 text-center">
-      <ul class="flex justify-center">
-        <li class="mr-6">
-          <a href="/client/correntes" class="hover:text-blue-700 hover:shadow-lg transition">Correntes</a>
-        </li>
-        <li class="mr-6">
-          <a href="/client/aneis" class="hover:text-blue-700 hover:shadow-lg transition">Anéis</a>
-        </li>
-        <li>
-          <a href="/client/pulseiras" class="hover:text-blue-700 hover:shadow-lg transition">Pulseiras</a>
-        </li>
-        <li>
-          <!-- Ícone de carrinho e botão de navegação -->
-          <button class="w-full flex justify-end" mat-icon-button routerLink="/carrinho" aria-label="Ir para o carrinho">
-            <mat-icon>shopping_cart</mat-icon>
-        </button>
-        </li> 
-      </ul>
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center">
+        <ul class="flex space-x-6">
+          <li>
+            <a href="/client/correntes" class="hover:text-blue-700 hover:shadow-lg transition">Correntes</a>
+          </li>
+          <li>
+            <a href="/client/aneis" class="hover:text-blue-700 hover:shadow-lg transition">Anéis</a>
+          </li>
+          <li>
+            <a href="/client/pulseiras" class="hover:text-blue-700 hover:shadow-lg transition">Pulseiras</a>
+          </li>
+        </ul>
+        <div class="flex items-center space-x-6">
+          <!-- Botão de logout -->
+          <button (click)="logout()" class="text-red-400 hover:text-red-700 hover:shadow-lg transition">
+            Logout
+          </button>
+          <!-- Botão do carrinho -->
+          <button class="text-white hover:text-gray-400 transition" routerLink="/carrinho" aria-label="Ir para o carrinho">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.857 12.171a2 2 0 001.992 1.829h8.302a2 2 0 001.992-1.829L19 6H6"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 6l4-4m0 0l-4 4m4-4L12 14"></path>
+            </svg>
+          </button>
+          <!-- Botão de perfil -->
+          <button class="text-white hover:text-gray-400 transition" routerLink="/user" aria-label="Ir para o perfil do usuário">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v4m0 0v4m0-4h4m-4 0H8"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
-  </nav>
+  </nav>  
     <!-- Header -->
     <header class="bg-cover bg-center h-screen w-full" style="background-image: url('https://image.lexica.art/full_webp/5693226b-9c22-4fb3-ba68-abeaacaa24ca');">
       <div class="bg-black bg-opacity-50 h-full flex flex-col items-center justify-center">

@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Anel } from 'src/app/interfaces/Anel';
 import { AnelService } from 'src/app/services/anel.service';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-aneis',
@@ -15,10 +16,17 @@ import { RouterLink } from '@angular/router';
 export class AneisComponent implements OnInit {
   aneis: Anel[] = [];
 
-  constructor(private anelService: AnelService) { }
+  constructor(private anelService: AnelService, private router: Router, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
     this.loadAneis();
+  }
+
+  logout(): void {
+    // Limpar o token do local storage
+    this.localStorageService.removeItem('token');
+    // Redirecionar para a página de login
+    this.router.navigate(['/login']);
   }
 
   loadAneis(): void {

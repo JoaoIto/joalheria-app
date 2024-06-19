@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Pulseira } from 'src/app/interfaces/Pulseira';
 import { PulseiraService } from 'src/app/services/pulseira.service';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-pulseiras',
@@ -15,10 +16,17 @@ import { RouterLink } from '@angular/router';
 export class PulseirasComponent implements OnInit {
   pulseiras: Pulseira[] = [];
 
-  constructor(private pulseiraService: PulseiraService) { }
+  constructor(private pulseiraService: PulseiraService, private router: Router, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
     this.loadPulseiras();
+  }
+
+  logout(): void {
+    // Limpar o token do local storage
+    this.localStorageService.removeItem('token');
+    // Redirecionar para a página de login
+    this.router.navigate(['/login']);
   }
 
   loadPulseiras(): void {
