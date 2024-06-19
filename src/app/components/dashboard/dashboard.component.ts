@@ -26,6 +26,8 @@ export class DashboardComponent implements OnInit {
     { title: 'Anéis', products: [] as Anel[] }
   ];
 
+  quantities: { [productId: number]: number } = {};
+
   constructor(
     private correntesService: CorrenteService,
     private pulseirasService: PulseiraService,
@@ -39,36 +41,36 @@ export class DashboardComponent implements OnInit {
     this.loadProducts();
   }
 
-  logout(): void {
-    // Limpar o token do local storage
-    this.localStorageService.removeItem('jwt_token');
-    this.localStorageService.removeItem('usuario_logado');
-    // Redirecionar para a página de login
-    this.router.navigate(['/login']);
-  }
-
   loadProducts(): void {
     this.correntesService.getCorrentes().subscribe((products: Corrente[]) => {
-      console.log('Correntes:', products);
       this.categories[0].products = products;
+      products.forEach(product => this.quantities[product.id] = 1);
     });
 
     this.pulseirasService.getPulseiras().subscribe((products: Pulseira[]) => {
-      console.log('Pulseiras:', products);
       this.categories[1].products = products;
+      products.forEach(product => this.quantities[product.id] = 1);
     });
 
     this.aneisService.getAneis().subscribe((products: Anel[]) => {
-      console.log('Anéis:', products);
       this.categories[2].products = products;
+      products.forEach(product => this.quantities[product.id] = 1);
     });
   }
 
+  incrementQuantity(productId: number): void {
+    this.quantities[productId] = (this.quantities[productId] || 1) + 1;
+  }
+
+  decrementQuantity(productId: number): void {
+    if (this.quantities[productId] > 1) {
+      this.quantities[productId]--;
+    }
+  }
+
   adicionarAoCarrinho(product: Anel | Corrente | Pulseira): void {
-    console.log(product);
     let tipoPedido: string;
 
-    // Verifica a categoria do produto e define o tipo de pedido
     if (this.categories[0].products.includes(product)) {
       tipoPedido = 'CORRENTE';
     } else if (this.categories[1].products.includes(product)) {
@@ -81,28 +83,19 @@ export class DashboardComponent implements OnInit {
     }
 
     const itemPedidoDTO: ItemPedido = {
-      quantidade: 1,
+      quantidade: this.quantities[product.id] || 1,
       idPedido: product.id,
       tipoPedido: tipoPedido
     };
 
-    console.log(itemPedidoDTO);
-
     this.itemPedidoService.postItemPedido(itemPedidoDTO).subscribe(() => {
-      // Navegar para a página do carrinho após adicionar o item
       this.router.navigate(['/carrinho']);
     });
-}
+  }
 
-
-
-  // onSearch(event: Event): void {
-  //   const query = (event.target as HTMLInputElement).value.toLowerCase();
-  //   this.categories.forEach(category => {
-  //     category.products = category.products.filter(product =>
-  //       product.joiaDTO.nome.toLowerCase().includes(query) ||
-  //       product.joiaDTO.descricao.toLowerCase().includes(query)
-  //     );
-  //   });
-  // }
+  logout(): void {
+    this.localStorageService.removeItem('jwt_token');
+    this.localStorageService.removeItem('usuario_logado');
+    this.router.navigate(['/login']);
+  }
 }
