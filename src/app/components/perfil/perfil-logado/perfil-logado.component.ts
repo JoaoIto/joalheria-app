@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms'; // Certifique-se de importar Forms
 import { Perfil } from 'src/app/interfaces/Perfil';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { Endereco } from 'src/app/interfaces/Endereco';
 
 @Component({
   selector: 'app-perfil-logado',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Certifique-se de incluir FormsModule aqui
+  imports: [CommonModule, FormsModule, RouterLink], // Certifique-se de incluir FormsModule aqui
   templateUrl: './perfil-logado.component.html',
   styleUrls: ['./perfil-logado.component.css']
 })
@@ -17,6 +18,10 @@ export class PerfilLogadoComponent implements OnInit {
   perfil: Partial<Perfil> = {
     email: '',
     nome: '',
+    pessoa: {
+      cpf: '',
+      listaEndereco: [] as Endereco[]
+    },
     perfil: '',
     token: ''
   };

@@ -1,49 +1,77 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-      <h2 class="text-2xl font-bold mb-6 text-center">Perfil</h2>
-      <div class="mb-4">
-        <label for="nome" class="block text-gray-700">Nome</label>
-        <input
-          type="text"
-          id="nome"
-          [(ngModel)]="perfil.nome"
-          name="nome"
-          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-      <div class="mb-4">
-        <label for="email" class="block text-gray-700">Email</label>
-        <input
-          type="email"
-          id="email"
-          [(ngModel)]="perfil.email"
-          name="email"
-          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-      <div class="flex items-center justify-between mt-6">
-        <button
-          (click)="atualizarPerfil()"
-          class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-        >
-          Atualizar
-        </button>
-        <button
-          (click)="deslogar()"
-          class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
-        >
-          Deslogar
-        </button>
-      </div>
-      <!-- Adicionar botão para alterar senha -->
-      <div class="mt-4">
-        <button
-          (click)="redirecionarAlterarSenha()"
-          class="text-gray-500 hover:text-gray-700 hover:underline focus:outline-none"
-        >
-          Alterar Senha
-        </button>
-      </div>
+<!-- Navbar -->
+<nav class="bg-gray-800 w-full text-white py-4">
+  <div class="container mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">JoalheriaApp</h1>
+      <!-- Botão de voltar para a dashboard -->
+      <button mat-button routerLink="/" color="warn">Voltar para a Dashboard</button>
+  </div>
+</nav>
+<div class="min-h-screen flex flex-col justify-center items-center bg-gray-100 p-4">
+
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md self-center">
+    <h2 class="text-2xl font-bold mb-6 text-center">Perfil</h2>
+    <div class="mb-4">
+      <label for="nome" class="block text-gray-700">Nome</label>
+      <input
+        type="text"
+        id="nome"
+        [(ngModel)]="perfil.nome"
+        name="nome"
+        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+    <div class="mb-4">
+      <label for="email" class="block text-gray-700">Email</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="perfil.email"
+        name="email"
+        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+    <div class="mb-4" *ngIf="perfil.pessoa">
+      <label for="cpf" class="block text-gray-700">CPF</label>
+      <input
+        type="text"
+        id="cpf"
+        [(ngModel)]="perfil.pessoa.cpf"
+        name="cpf"
+        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+    <div class="mb-4" *ngIf="perfil.pessoa">
+      <label for="endereco" class="block text-gray-700">Endereço: </label>
+      <input
+        type="text"
+        id="endereco"
+        [(ngModel)]="perfil.pessoa.listaEndereco"
+        name="endereco"
+        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+    <div class="flex items-center justify-between mt-6">
+      <button
+        (click)="atualizarPerfil()"
+        class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+      >
+        Atualizar
+      </button>
+      <button
+        (click)="deslogar()"
+        class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
+      >
+        Deslogar
+      </button>
+    </div>
+    <!-- Adicionar botão para alterar senha -->
+    <div class="mt-4">
+      <button
+        (click)="redirecionarAlterarSenha()"
+        class="text-gray-500 hover:text-gray-700 hover:underline focus:outline-none"
+      >
+        Alterar Senha
+      </button>
     </div>
   </div>
-  
+</div>
