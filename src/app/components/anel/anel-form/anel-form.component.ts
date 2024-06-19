@@ -100,7 +100,7 @@ export class AnelFormComponent implements OnInit{
       const pulseira: Partial<Anel> = {
         joiaDTO,
         tamanho: this.formGroup.get('tamanho')?.value,
-        imgAnel: this.formGroup.get('imgAnel')?.value,
+        nomeImagem: this.formGroup.get('imgAnel')?.value,
       };
 
       this.anelSevice.insert(pulseira).subscribe(

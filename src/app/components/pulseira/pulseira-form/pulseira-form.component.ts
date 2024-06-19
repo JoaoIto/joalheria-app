@@ -143,7 +143,7 @@ export class PulseiraFormComponent implements OnInit {
       const pulseira: Partial<Pulseira> = {
         joiaDTO,
         comprimento: this.formGroup.get('comprimento')?.value,
-        imgPulseira: this.formGroup.get('imgPulseira')?.value,
+        nomeImagem: this.formGroup.get('imgPulseira')?.value,
         idFecho: parseInt(this.formGroup.get('idFecho')?.value, 10),
         idElo: parseInt(this.formGroup.get('idElo')?.value, 10),
         idPingente: parseInt(this.formGroup.get('idPingente')?.value, 10)
