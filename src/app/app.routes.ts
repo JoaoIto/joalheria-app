@@ -32,6 +32,7 @@ import { AuthComponent } from "./components/auth/auth-form.component";
 import { CadastroComponent } from "./components/auth/cadastro/cadastro.component";
 import { PerfilLogadoComponent } from "./components/perfil/perfil-logado/perfil-logado.component";
 import { AlterarSenhaComponent } from "./components/perfil/perfil-logado/alterar-senha/alterar-senha.component";
+import { PagamentoConfirmacaoComponent } from "./components/client/pagamento/pagamento-confirm/pagamento.component";
 
 export const routes: Routes = [
   // Routes client
@@ -43,6 +44,7 @@ export const routes: Routes = [
   {path: 'carrinho', component: CarrinhoComponent, title: 'Carrinho'},
   {path: 'pagamento', component: PagamentoComponent, title: 'Pagamento'},
   {path: 'pagamento/cartao', component: PagamentoCartaoComponent, title: 'Pagamento-Cartão'},
+  {path: 'pagamento/confirmacao', component: PagamentoConfirmacaoComponent, title: 'Pagamento-Confirmacao'},
   {path: 'client/correntes', component: CorrentesComponent, title: 'Correntes'},
   {path: 'client/pulseiras', component: PulseirasComponent, title: 'Pulseiras'},
   {path: 'client/aneis', component: AneisComponent, title: 'Aneis'},
