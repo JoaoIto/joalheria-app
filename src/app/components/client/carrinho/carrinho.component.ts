@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemCarrinho } from 'src/app/interfaces/ItemCarrinho';
 import { CarrinhoService } from 'src/app/services/carrinho.service';
 import { RouterLink } from '@angular/router';
 import { Carrinho } from 'src/app/interfaces/Carrinho';
@@ -10,7 +9,7 @@ import { Joia } from 'src/app/interfaces/Joia';
 @Component({
   selector: 'app-carrinho',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, RouterLink],
   templateUrl: './carrinho.component.html',
   styleUrls: ['./carrinho.component.css']
 })
