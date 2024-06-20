@@ -13,6 +13,6 @@ export class CarrinhoService {
   constructor(private http: HttpClient) { }
 
   getCarrinho(): Observable<Carrinho[]> {
-    return this.http.get<Carrinho[]>(this.apiUrl);
+    return this.http.get<Carrinho[]>(`${this.apiUrl}/usuarioLogado`);
   }
 }
