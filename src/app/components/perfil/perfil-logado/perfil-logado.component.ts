@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Router, RouterLink } from '@angular/router';
 import { Endereco } from 'src/app/interfaces/Endereco';
+import { PessoaService } from 'src/app/services/pessoa.service';
 
 @Component({
   selector: 'app-perfil-logado',
@@ -29,6 +30,7 @@ export class PerfilLogadoComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private localStorageService: LocalStorageService,
+    private pessoaService: PessoaService,
     private router: Router
   ) { }
 
@@ -37,13 +39,66 @@ export class PerfilLogadoComponent implements OnInit {
     if (usuarioLogado) {
       console.log(usuarioLogado);
       this.perfil = usuarioLogado;
+      if (!this.perfil.pessoa) {
+        this.perfil.pessoa = {
+          id: 0, // Inicialize com valores padrão ou adequados
+          cpf: '',
+          listaEndereco: []
+        };
+      } else if (!this.perfil.pessoa.listaEndereco) {
+        this.perfil.pessoa.listaEndereco = [] as Endereco[];
+      }
     }
-  }
+  }  
 
   atualizarPerfil(): void {
     // Adicione a lógica de atualização aqui, se necessário
     console.log('Perfil atualizado:', this.perfil);
   }
+
+  novoEndereco: Endereco = {
+    idCidade: { id: 0, nome: '', estado: {
+      id: 0,
+      nome: '',
+      sigla: '',
+    } }, // Inicialize com um objeto Cidade padrão
+    cep: '',
+    numero: 0,
+    bairro: '',
+    logradouro: '',
+    complemento: ''
+  };
+  
+  adicionarEndereco(): void {
+    if (this.perfil.pessoa && this.perfil.pessoa.id !== undefined) {
+      const pessoaId = this.perfil.pessoa.id;
+      this.pessoaService.addEndereco(pessoaId, this.novoEndereco).subscribe(
+        (response) => {
+          console.log('Endereço adicionado:', response);
+          if (this.perfil.pessoa && this.perfil.pessoa.listaEndereco) {
+            this.perfil.pessoa.listaEndereco.push(this.novoEndereco);
+          }
+          this.novoEndereco = {
+            idCidade: { id: 0, nome: '', estado: {
+              id: 0,
+              nome: '',
+              sigla: '',
+            } }, // Reinicialize com valores padrão
+            cep: '',
+            numero: 0,
+            bairro: '',
+            logradouro: '',
+            complemento: ''
+          }; // Limpa o formulário após adicionar
+        },
+        (error) => {
+          console.error('Erro ao adicionar endereço:', error);
+        }
+      );
+    } else {
+      console.error('Pessoa não encontrada ou ID da pessoa indefinido.');
+    }
+  }  
 
   deslogar(): void {
     this.localStorageService.removeItem('jwt_token');
