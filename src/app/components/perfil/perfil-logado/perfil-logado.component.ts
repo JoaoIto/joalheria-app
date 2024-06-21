@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Certifique-se de importar FormsModule
+import { FormsModule } from '@angular/forms';
 import { Perfil } from 'src/app/interfaces/Perfil';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -11,7 +11,7 @@ import { PessoaService } from 'src/app/services/pessoa.service';
 @Component({
   selector: 'app-perfil-logado',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink], // Certifique-se de incluir FormsModule aqui
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './perfil-logado.component.html',
   styleUrls: ['./perfil-logado.component.css']
 })
@@ -35,40 +35,48 @@ export class PerfilLogadoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const usuarioLogado = this.localStorageService.getItem('usuario_logado');
-    if (usuarioLogado) {
-      console.log(usuarioLogado);
-      this.perfil = usuarioLogado;
-      if (!this.perfil.pessoa) {
-        this.perfil.pessoa = {
-          id: 0, // Inicialize com valores padrão ou adequados
-          cpf: '',
-          listaEndereco: []
-        };
-      } else if (!this.perfil.pessoa.listaEndereco) {
-        this.perfil.pessoa.listaEndereco = [] as Endereco[];
+    this.authService.getUsuarioLogadoHttp().subscribe(
+      (usuarioLogado: Perfil) => {
+        console.log(usuarioLogado);
+        this.perfil = usuarioLogado;
+        this.localStorageService.setItem('usuario_logado', usuarioLogado);
+        if (!this.perfil.pessoa) {
+          this.perfil.pessoa = {
+            id: 0,
+            cpf: '',
+            listaEndereco: []
+          };
+        } else if (!this.perfil.pessoa.listaEndereco) {
+          this.perfil.pessoa.listaEndereco = [] as Endereco[];
+        }
+      },
+      (error) => {
+        console.error('Erro ao carregar dados do usuário logado:', error);
       }
-    }
-  }  
+    );
+  }
+
+  redirecionarAdicionarEndereco(): void {
+    this.router.navigate(['/user/endereco/adicionar']);
+  }
 
   atualizarPerfil(): void {
-    // Adicione a lógica de atualização aqui, se necessário
     console.log('Perfil atualizado:', this.perfil);
   }
 
   novoEndereco: Endereco = {
-    idCidade: { id: 0, nome: '', estado: {
+    cidade: { id: 0, nome: '', estado: {
       id: 0,
       nome: '',
-      sigla: '',
-    } }, // Inicialize com um objeto Cidade padrão
+      sigla: ''
+    } },
     cep: '',
     numero: 0,
     bairro: '',
     logradouro: '',
     complemento: ''
   };
-  
+
   adicionarEndereco(): void {
     if (this.perfil.pessoa && this.perfil.pessoa.id !== undefined) {
       const pessoaId = this.perfil.pessoa.id;
@@ -79,17 +87,17 @@ export class PerfilLogadoComponent implements OnInit {
             this.perfil.pessoa.listaEndereco.push(this.novoEndereco);
           }
           this.novoEndereco = {
-            idCidade: { id: 0, nome: '', estado: {
+            cidade: { id: 0, nome: '', estado: {
               id: 0,
               nome: '',
-              sigla: '',
-            } }, // Reinicialize com valores padrão
+              sigla: ''
+            } },
             cep: '',
             numero: 0,
             bairro: '',
             logradouro: '',
             complemento: ''
-          }; // Limpa o formulário após adicionar
+          };
         },
         (error) => {
           console.error('Erro ao adicionar endereço:', error);
@@ -98,7 +106,7 @@ export class PerfilLogadoComponent implements OnInit {
     } else {
       console.error('Pessoa não encontrada ou ID da pessoa indefinido.');
     }
-  }  
+  }
 
   deslogar(): void {
     this.localStorageService.removeItem('jwt_token');

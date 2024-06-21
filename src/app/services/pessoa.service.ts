@@ -19,6 +19,6 @@ export class PessoaService {
   }
 
   addEndereco(pessoaId: number, endereco: Endereco): Observable<any> {
-    return this.http.post(`${this.apiUrl}/pessoas/${pessoaId}/enderecos`, endereco);
+    return this.http.post(`${this.apiUrl}/${pessoaId}/enderecos`, endereco);
   }
 }

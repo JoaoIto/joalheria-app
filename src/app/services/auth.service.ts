@@ -35,6 +35,10 @@ export class AuthService {
     }
   }
 
+  getUsuarioLogadoHttp(): Observable<Perfil> {
+    return this.http.get<Perfil>(`${this.baseURL}/usuarioLogado`);
+  }
+
   cadastro(cadastroData: CadastroDTO): Observable<any> {
     return this.http.post(`${this.baseURL}/cadastro`, cadastroData, {observe: 'response'}).pipe(
       tap((res: any) => {
@@ -73,6 +77,8 @@ export class AuthService {
       })
     );
   }
+
+  
 
   alterarSenha(email: string, novaSenha: string): Observable<any> {
     const params = { novaSenha: novaSenha }; // Ajuste para enviar novaSenha como 'novaSenha'

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagamentoService } from 'src/app/services/pagamento.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { PagamentoDTO } from 'src/app/interfaces/PagamentoDTO';
 
 @Component({
   selector: 'app-pagamento-cartao',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './pagamento-cartao.component.html',
   styleUrls: ['./pagamento-cartao.component.css']
 })
@@ -37,7 +37,7 @@ export class PagamentoCartaoComponent {
       // Redirecionar para outra rota após o pagamento ser realizado com sucesso
       window.alert("Pagamento Realizado!")
       const pedidoJson = localStorage.removeItem('pedido');
-      this.router.navigate(['/pagamento']);
+      this.router.navigate(['/pagamento/confirmacao']);
     }, error => {
       console.error('Erro ao realizar o pagamento:', error);
       // Tratar erros ou mostrar uma mensagem de erro para o usuário
